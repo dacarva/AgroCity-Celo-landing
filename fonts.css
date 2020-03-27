@@ -1,0 +1,11 @@
+@font-face {
+    font-family: 'Gotham';
+    src: url('https://agrocity.s3.amazonaws.com/assets/fonts/gotham-bold-webfont.woff2') format('woff2');
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'Gotham';
+    src: url('https://agrocity.s3.amazonaws.com/assets/fonts/gotham-black-webfont.woff2') format('woff2');
+    font-weight: black;
+}
