@@ -15,7 +15,11 @@
     <link rel="stylesheet" href="https://agrocity.s3.amazonaws.com/assets/css/fonts.css">
     <link rel="stylesheet" href="https://agrocity.s3.amazonaws.com/assets/css/style.css">
     <title>AgroCity - Traceable organic food</title>
-    
+    <!-- Mounting Vue JS and i18n -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-i18n/dist/vue-i18n.js"></script>
+
+
     <style>
         .brand-text {
             font-family: 'Gotham';
@@ -38,651 +42,796 @@
     </style>
 </head>
 <body data-spy="scroll" data-target=".navbar" class="has-loading-screen">
-    <div class="ts-page-wrapper" id="page-top">
+    <div id="app">
+        <div class="ts-page-wrapper" id="page-top">
 
-        <!--*********************************************************************************************************-->
-        <!--************ HERO ***************************************************************************************-->
-        <!--*********************************************************************************************************-->
-        <header id="ts-hero" class="ts-full-screen ts-separate-bg-element" data-mask-bottom-wn-color="#fff" data-bg-image="https://agrocity.s3.amazonaws.com/assets/img/farming.jpg" data-bg-color="#737373" data-bg-image-opacity=".8" data-bg-parallax="scroll" data-bg-parallax-speed="3">
-            <!--NAVIGATION ******************************************************************************************-->
-            <nav class="navbar navbar-expand-lg navbar-dark fixed-top ts-separate-bg-element" data-bg-color="#1d1d1d">
-                <div class="container">
-                    <a class="navbar-brand" href="#page-top">
-                        <img src="https://agrocity.s3.amazonaws.com/assets/img/cannvest-isotipo.svg" class="top-logo" alt="Cannvest Logo">
-                        <h2 class="brand-text">AgroCity</h2>
-                    </a>
-                    <!--end navbar-brand-->
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <!--end navbar-toggler-->
-                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                        <div class="navbar-nav ml-auto">
-                            <a class="nav-item nav-link active ts-scroll" href="#page-top">Home <span class="sr-only">(current)</span></a>
-                            <a class="nav-item nav-link ts-scroll" href="#grow-organics">Grow</a>
-                            <a class="nav-item nav-link ts-scroll" href="#buy-organics">Buy</a>
-                            <a class="nav-item nav-link ts-scroll" href="#organize">Features</a>
-                            <a class="nav-item nav-link ts-scroll" href="#our-team">Team</a>
-                            <a class="nav-item nav-link ts-scroll" href="#form-contact">Contact</a>
+            <!--*********************************************************************************************************-->
+            <!--************ HERO ***************************************************************************************-->
+            <!--*********************************************************************************************************-->
+            <header id="ts-hero" class="ts-full-screen ts-separate-bg-element" data-mask-bottom-wn-color="#fff" data-bg-image="https://agrocity.s3.amazonaws.com/assets/img/farming.jpg" data-bg-color="#737373" data-bg-image-opacity=".8" data-bg-parallax="scroll" data-bg-parallax-speed="3">
+                <!--NAVIGATION ******************************************************************************************-->
+                <nav class="navbar navbar-expand-lg navbar-dark fixed-top ts-separate-bg-element" data-bg-color="#1d1d1d">
+                    <div class="container">
+                        <a class="navbar-brand" href="#page-top">
+                            <img src="https://agrocity.s3.amazonaws.com/assets/img/cannvest-isotipo.svg" class="top-logo" alt="Cannvest Logo">
+                            <h2 class="brand-text">AgroCity</h2>
+                        </a>
+                        <!--end navbar-brand-->
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <!--end navbar-toggler-->
+                        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                            <div class="navbar-nav ml-auto">
+                                <a class="nav-item nav-link active ts-scroll" href="#page-top">{{ $t("message.nav.home") }}<span class="sr-only">(current)</span></a>
+                                <a class="nav-item nav-link ts-scroll" href="#grow-organics">{{ $t("message.nav.grow") }}</a>
+                                <a class="nav-item nav-link ts-scroll" href="#buy-organics">{{ $t("message.nav.buy") }}</a>
+                                <a class="nav-item nav-link ts-scroll" href="#organize">{{ $t("message.nav.features") }}</a>
+                                <a class="nav-item nav-link ts-scroll" href="#our-team">{{ $t("message.nav.team") }}</a>
+                                <a class="nav-item nav-link ts-scroll" href="#form-contact">{{ $t("message.nav.contact") }}</a>
+
+                                <!-- Locale toggler -->
+                                <img v-bind:src="displayLocale" v-on:click="switchLocale()" style="width: 25px;" alt="Locale flag">
+                            </div>
+                            <!--end navbar-nav-->
                         </div>
-                        <!--end navbar-nav-->
+                        <!--end collapse-->
                     </div>
-                    <!--end collapse-->
-                </div>
-                <!--end container-->
-            </nav>
-            <!--end navbar-->
-
-            <!--HERO CONTENT ****************************************************************************************-->
-            <div class="container align-self-center align-items-center">
-                <div class="row">
-                    <div class="col-md-6">
-                        <h3 class="ts-opacity__80">Agrocity</h3>
-                        <h1>Fresh. Organic. Authentic</h1>
-                    </div>
-                </div>
-                <a href="#grow-organics" class="btn btn-primary ts-scroll">Grow organics</a>
-                <a href="#buy-organics" class="btn btn-info ts-scroll">Buy organics</a>
-            </div>
-            <!--end container-->
-        </header>
-        <!--end #hero-->
-
-        <!--*********************************************************************************************************-->
-        <!--************ CONTENT ************************************************************************************-->
-        <!--*********************************************************************************************************-->
-        <main id="ts-content">
-
-            <!--GROW ORGANICS *************************************************************************************-->
-            <section id="grow-organics" class="ts-block text-center pt-4">
-                <div class="container">
-                    <div class="ts-title">
-                        <h2>Grow Organics</h2>
-                    </div>
-                    <!--end ts-title-->
+                    <!--end container-->
+                </nav>
+                <!--end navbar-->
+    
+                <!--HERO CONTENT ****************************************************************************************-->
+                <div class="container align-self-center align-items-center">
                     <div class="row">
-                        <div class="col-sm-6 col-md-4 col-xl-4">
-                            <figure data-animate="ts-fadeInUp" >
-                                <figure class="icon mb-3 p-2">
-                                    <img src="https://agrocity.s3.amazonaws.com/assets/icons/Location.svg" class="feature-icons" alt="">
-                                </figure>
-                                <h4>Rent your terrace</h4>
-                                <p>
-                                    We rent your terrace space to install hydroponic farms
-                                </p>
-                            </figure>
+                        <div class="col-md-6">
+                            <h3 class="ts-opacity__80">Agrocity</h3>
+                            <h1>{{ $t("message.hero.slogan") }}</h1>
                         </div>
-                        <!--end col-xl-4-->
-                        <div class="col-sm-6 col-md-4 col-xl-4">
-                            <figure data-animate="ts-fadeInUp" >
-                                <figure class="icon mb-3 p-2">
-                                    <img src="https://agrocity.s3.amazonaws.com/assets/icons/Irrigation.svg" class="feature-icons" alt="">
-                                </figure>
-                                <h4>Grow your food</h4>
-                                <p>
-                                    Choose from our selection of organic products and grow them
-                                </p>
-                            </figure>
-                        </div>
-                        <!--end col-xl-4-->
-                        <div class="col-sm-6 col-md-4 col-xl-4">
-                            <figure data-animate="ts-fadeInUp" >
-                                <figure class="icon mb-3 p-2">
-                                    <img src="https://agrocity.s3.amazonaws.com/assets/icons/Sell_products.svg" class="feature-icons" alt="">
-                                </figure>
-                                <h4>Sell it and earn money</h4>
-                                <p>
-                                    We connect you with buyers and collect the products
-                                </p>
-                            </figure>
-                        </div>
-                        <!--end col-xl-4-->                        
                     </div>
-                    <!--end row-->
-                    <div class="card-footer bg-transparent pt-0 ts-border-none">
-                        <a href="#contact" class="btn btn-primary">Grow with us</a>
-                    </div>
+                    <a href="#grow-organics" class="btn btn-primary ts-scroll">{{ $t("message.titles.grow_organics") }}</a>
+                    <a href="#buy-organics" class="btn btn-info ts-scroll">{{ $t("message.titles.buy_organics") }}</a>
                 </div>
                 <!--end container-->
-            </section>
-            <!--BUY ORGANICS *************************************************************************************-->
-            <section id="buy-organics" class="ts-block text-center pt-4">
-                <div class="container">
-                    <div class="ts-title">
-                        <h2>Buy Organics</h2>
-                    </div>
-                    <!--end ts-title-->
-                    <div class="row">
-                        <div class="col-sm-6 col-md-4 col-xl-4">
-                            <figure data-animate="ts-fadeInUp">
-                                <figure class="icon mb-3 p-2">
-                                    <img src="https://agrocity.s3.amazonaws.com/assets/icons/Increasing_number_of_product.svg" class="feature-icons" alt="">
-                                </figure>
-                                <h4>Choose your food</h4>
-                                <p>
-                                    Choose your menu from the closest growers to you
-                                </p>
-                            </figure>
+            </header>
+            <!--end #hero-->
+    
+            <!--*********************************************************************************************************-->
+            <!--************ CONTENT ************************************************************************************-->
+            <!--*********************************************************************************************************-->
+            <main id="ts-content">
+                <!--GROW ORGANICS *************************************************************************************-->
+                <section id="grow-organics" class="ts-block text-center pt-4">
+                    <div class="container">
+                        <div class="ts-title">
+                            <h2>{{ $t("message.titles.grow_organics") }}</h2>
                         </div>
-                        <!--end col-xl-4-->
-                        <div class="col-sm-6 col-md-4 col-xl-4">
-                            <figure data-animate="ts-fadeInUp" data-delay="0.1s">
-                                <figure class="icon mb-3 p-2">
-                                    <img src="https://agrocity.s3.amazonaws.com/assets/icons/Water_moisture_control.svg" class="feature-icons" alt="">
+                        <!--end ts-title-->
+                        <div class="row">                       
+                            <div v-for="feature in $i18n.messages[$i18n.locale].message.grow_organics_features" class="col-sm-6 col-md-4 col-xl-4">
+                                <figure data-animate="ts-fadeInUp" >
+                                    <figure class="icon mb-3 p-2">
+                                        <img v-bind:src="feature.picture" class="feature-icons" alt="">
+                                    </figure>
+                                    <h4>{{ feature.title }}</h4>
+                                    <p>{{ feature.description }}</p>
                                 </figure>
-                                <h4>See how it grows near you</h4>
-                                <p>
-                                    Follow the growth of your food with our app
-                                </p>
-                            </figure>
-                        </div>
-                        <!--end col-xl-4-->
-                        <div class="col-sm-6 offset-sm-4 col-md-4 offset-md-0 col-xl-4">
-                            <figure data-animate="ts-fadeInUp" data-delay="0.2s">
-                                <figure class="icon mb-3 p-2">
-                                    <img src="https://agrocity.s3.amazonaws.com/assets/icons/Farmer.svg" class="feature-icons" alt="">
-                                </figure>
-                                <h4>Enjoy!</h4>
-                                <p>
-                                    Get fresh and healthy food from the closest growers
-                                </p>
-                            </figure>
-                        </div>
-                        <!--end col-xl-4-->
-                    </div>
-                    <!--end row-->
-                    <div class="card-footer bg-transparent pt-0 ts-border-none">
-                        <a href="#contact" class="btn btn-primary">Buy from us</a>
-                    </div>                    
-                </div>
-                <!--end container-->
-            </section>            
-            <!--END HOW IT WORKS ************************************************************************************-->
-
-            <!--FEATURES ********************************************************************************************-->
-            <section id="organize" class="ts-block pt-5">
-                <div class="container">
-                    <div class="ts-title text-center">
-                        <h2>A farm in your pocket</h2>
-                    </div>
-                    <!--end ts-title-->
-                    <div class="row align-items-center">
-                        <div class="col-md-4">
-                            <figure class="text-right ts-xs-text-center" data-animate="ts-fadeInUp">
-                                <figure class="icon">
-                                    <img src="https://agrocity.s3.amazonaws.com/assets/icons/Climate_monitor.svg" class="mobile-icons" alt="">
-
-                                </figure>
-                                <h4 class="mb-2">Monitor the Activity</h4>
-                                <p>
-                                    Monitor the growth conditions of the hydroponic farm
-                                </p>
-                            </figure>
-                            <figure class="text-right ts-xs-text-center" data-animate="ts-fadeInUp" data-delay=".1s">
-                                <figure class="icon">
-                                    <img src="https://agrocity.s3.amazonaws.com/assets/icons/Analysis_mapping.svg" class="mobile-icons" alt="">
-                                </figure>
-                                <h4 class="mb-2">Analyze Results</h4>
-                                <p>
-                                    Improve the growth of your farm based on the data we collect
-                                </p>
-                            </figure>
-                            <figure class="text-right ts-xs-text-center" data-animate="ts-fadeInUp" data-delay=".3s">
-                                <figure class="icon">
-                                    <img src="https://agrocity.s3.amazonaws.com/assets/icons/Predictive.svg" class="mobile-icons" alt="">
-                                </figure>
-                                <h4 class="mb-2">Predict your yield</h4>
-                                <p>
-                                    Get insights on your farm to predict the next yield
-                                </p>
-                            </figure>
-                        </div>
-                        <!--end col-md-4-->
-
-                        <div class="col-md-4 my-5 d-flex justify-content-center align-items-center">
-                            <div class="image position-relative">
-                                <img src="https://agrocity.s3.amazonaws.com/assets/img/mockups/MOCKUP-DASHBOARD-PHONE.png" class="mw-100" alt="" data-animate="ts-zoomInShort" data-delay=".1s">
                             </div>
+                            <!--end col-xl-4-->                            
                         </div>
-                        <!--end col-md-4-->
-
-                        <div class="col-md-4">
-                            <figure class="ts-xs-text-center" data-animate="ts-fadeInUp">
-                                <figure class="icon">
-                                    <img src="https://agrocity.s3.amazonaws.com/assets/icons/Blockchain.svg" class="mobile-icons" alt="">
+                        <!--end row-->
+                        <div class="card-footer bg-transparent pt-0 ts-border-none">
+                            <a href="#contact" class="btn btn-primary">{{ $t("message.buttons.grow_with_us") }}</a>
+                        </div>
+                    </div>
+                    <!--end container-->
+                </section>
+                <!--BUY ORGANICS *************************************************************************************-->
+                <section id="buy-organics" class="ts-block text-center pt-4">
+                    <div class="container">
+                        <div class="ts-title">
+                            <h2>{{ $t("message.titles.buy_organics") }}</h2>
+                        </div>
+                        <!--end ts-title-->
+                        <div class="row">                           
+                            <div v-for="feature in $i18n.messages[$i18n.locale].message.buy_organics_features" class="col-sm-6 col-md-4 col-xl-4">
+                                <figure data-animate="ts-fadeInUp" >
+                                    <figure class="icon mb-3 p-2">
+                                        <img v-bind:src="feature.picture" class="feature-icons" alt="">
+                                    </figure>
+                                    <h4>{{ feature.title }}</h4>
+                                    <p>{{ feature.description }}</p>
                                 </figure>
-                                <h4 class="mb-2">Blockchain traceability</h4>
-                                <p>
-                                    Know what has happened with your products from seed to plate
-                                </p>
-                            </figure>
-                            <figure class="ts-xs-text-center" data-animate="ts-fadeInUp" data-delay=".1s">
-                                <figure class="icon">
-                                    <img src="https://agrocity.s3.amazonaws.com/assets/icons/Smart_sensor.svg" class="mobile-icons" alt="">
-                                </figure>
-                                <h4 class="mb-2">Internet of Things</h4>
-                                <p>
-                                    Get real time data of the crop using the farm sensors
-                                </p>
-                            </figure>
-                            <figure class="ts-xs-text-center" data-animate="ts-fadeInUp" data-delay=".3s">
-                                <figure class="icon">
-                                    <img src="https://agrocity.s3.amazonaws.com/assets/icons/Prepare_soil_for_crop.svg" class="mobile-icons" alt="">
-                                </figure>
-                                <h4 class="mb-2">Data Analytics</h4>
-                                <p>
-                                    Check the current and future trends of the farms and market
-                                </p>
-                            </figure>
-                        </div>
-                        <!--end col-md-4-->
-                    </div>
-                    <!--end row-->
-                </div>
-                <!--end container-->
-            </section>
-            <!--END FEATURES ****************************************************************************************-->
-
-            <!--ADVANCED FEATURES ***********************************************************************************-->
-            <section id="advanced-features" class="ts-block">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-5 col-xl-5" data-animate="ts-fadeInUp">
-                            <div class="ts-title">
-                                <h2>When blockchain meets agriculture</h2>
                             </div>
-                            <!--end ts-title-->
-                            <p>
-                                Our platform registers the origin, processes and destination of the food ensuring full transparency in the supply chain
-                            </p>
-                            <ul class="ts-list-colored-bullets">
-                                <li>Your yield is protected against fraud</li>
-                                <li>Peace of mind. Your food IS organic</li>
-                                <li>Trace the origin of the plants and supplies</li>
-                            </ul>
+                            <!--end col-xl-4-->                            
                         </div>
-                        <!--end col-xl-5-->
-                        <div class="col-md-7 col-xl-7 text-center" data-animate="ts-fadeInUp" data-delay="0.1s">
-                            <div class="px-3">
-                                <img src="https://agrocity.s3.amazonaws.com/assets/img/mockups/MOCKUP-DASHBOARD-PHONE-CROWDFUNDING.png" class="mw-100" alt="">
-                            </div>
-                        </div>
-                        <!--end col-xl-7-->
+                        <!--end row-->                        
+                        <div class="card-footer bg-transparent pt-0 ts-border-none">
+                            <a href="#contact" class="btn btn-primary">{{ $t("message.buttons.buy_from_us") }}</a>
+                        </div>                    
                     </div>
-                    <!--end row-->
-                </div>
-                <!--end container-->
-            </section>
-            <!--END ADVANCED FEATURES *******************************************************************************-->
-
-            <!--RESPONSIVE ***********************************************************************************-->
-            <section id="responsive" class="ts-block">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-7 col-xl-7 text-center" data-animate="ts-fadeInUp" data-delay="0.1s">
-                            <div class="px-3 mb-4">
-                                <img src="https://agrocity.s3.amazonaws.com/assets/img/mockups/MOCKUP-DASHBOARD-DESKTOP.png" class="mw-100" alt="">
-                            </div>
+                    <!--end container-->
+                </section>            
+                <!--END HOW IT WORKS ************************************************************************************-->
+    
+                <!--FEATURES ********************************************************************************************-->
+                <section id="organize" class="ts-block pt-5">
+                    <div class="container">
+                        <div class="ts-title text-center">
+                            <h2>{{ $t("message.titles.farm_pocket") }}</h2>
                         </div>
-                        <!--end col-xl-7-->
-                        <div class="col-md-5 col-xl-5" data-animate="ts-fadeInUp">
-                            <div class="ts-title">
-                                <h2>You can predict your yield</h2>
+                        <!--end ts-title-->
+                        <div class="row align-items-center">
+                            <div class="col-md-4">
+                                <figure v-for="feature in $i18n.messages[$i18n.locale].message.app_features.left" class="text-right ts-xs-text-center" data-animate="ts-fadeInUp" data-delay=".3s">
+                                    <figure class="icon">
+                                        <img v-bind:src="feature.picture"  class="mobile-icons" alt="">
+                                    </figure>
+                                    <h4>{{ feature.title }}</h4>
+                                    <p>{{ feature.description }}</p>
+                                </figure>                                
                             </div>
-                            <!--end ts-title-->
-                            <p>
-                                <span style="font-weight: bold;">AGROCITY</span> aggregates the data of their growers and uses data analytics to have the largest data repository of hidroponic agriculture
-                            </p>
-                            <ul class="ts-list-colored-bullets">
-                                <li>We think of every farm as a micro-lab </li>
-                                <li>We compare the growth results of different products in different farms</li>
-                                <li>Our AI estimates the best processes to optimize time and increase yield</li>
-                            </ul>
-                        </div>
-                        <!--end col-xl-5-->
-                    </div>
-                    <!--end row-->
-                </div>
-                <!--end container-->
-            </section>
-            <!--END ADVANCED FEATURES *******************************************************************************-->
-
-            <!--PRICING *********************************************************************************************-->
-            <section id="pricing" class="ts-block ts-separate-bg-element" data-bg-image="https://agrocity.s3.amazonaws.com/assets/img/veggies.jpg" data-bg-color="#000" data-bg-image-opacity=".5" data-bg-parallax="scroll" data-bg-parallax-speed="3" data-mask-top-nw-color="#fff" data-mask-bottom-wn-color="#eaeaea">
-                <div class="container">
-                    <div class="ts-title text-center text-white">
-                        <h2>Affordable and Healthy</h2>
-                    </div>
-                    <!--end ts-title-->
-                    <div class="row no-gutters ts-cards-same-height">
-                        <!--Price Box-->
-                        <div class="col-sm-4 col-lg-4">
-                            <div class="card text-center ts-price-box" data-animate="ts-fadeInUp">
-                                <div class="card-header p-0">
-                                    <h5 class="mb-0 py-3 text-white" data-bg-color="#7a9b97">Raw</h5>
-                                    <div class="ts-title py-5 mb-0">
-                                        <h3 class="mb-0 font-weight-normal">$9,99</h3>
-                                        <small class="ts-opacity__50">per month</small >
-                                    </div>
-                                </div>
-                                <!--end card-header-->
-                                <div class="card-body p-0">
-                                    <ul class="list-unstyled ts-list-divided">
-                                        <li>5kg of food on your door</li>
-                                        <li>Basic food tracking features</li>
-                                        <li>5 choices of products</li>
-                                        <li>Basic support</li>
-                                    </ul>
-                                    <!--end list-->
-                                </div>
-                                <!--end card-body-->
-                                <div class="card-footer bg-transparent pt-0 ts-border-none">
-                                    <a href="#contact" class="btn btn-outline-dark ts-btn-border-muted">Contact Us</a>
+                            <!--end col-md-4-->
+    
+                            <div class="col-md-4 my-5 d-flex justify-content-center align-items-center">
+                                <div class="image position-relative">
+                                    <img src="https://agrocity.s3.amazonaws.com/assets/img/mockups/MOCKUP-DASHBOARD-PHONE.png" class="mw-100" alt="" data-animate="ts-zoomInShort" data-delay=".1s">
                                 </div>
                             </div>
-                            <!--end card-->
-                        </div>
-                        <!--end price-box col-md-4-->
-
-                        <!--Price Box Promoted-->
-                        <div class="col-sm-4 col-lg-4">
-                            <div class="card text-center ts-price-box ts-price-box__promoted" data-animate="ts-fadeInUp" data-delay="0.1s">
-                                <div class="card-header p-0" data-bg-color="#ff6a6a">
-                                    <h5 class="mb-0 py-3 text-white" data-bg-color="#e55f5f">Cooked</h5>
-                                    <div class="ts-title text-white py-5 mb-0">
-                                        <h3 class="mb-0 font-weight-normal">
-                                            <sup>$</sup>14,99
-                                        </h3>
-                                        <small class="ts-opacity__50">per month</small >
-                                    </div>
-                                </div>
-                                <!--end card-header-->
-                                <div class="card-body p-0">
-                                    <ul class="list-unstyled ts-list-divided">
-                                        <li>8kg of food on your door</li>
-                                        <li>Advanced food tracking features</li>
-                                        <li>8 choices of products</li>
-                                        <li>Premium support</li>
-                                    </ul>
-                                    <!--end list-->
-                                </div>
-                                <!--end card-body-->
-                                <div class="card-footer bg-transparent pt-0 ts-border-none">
-                                    <a href="#contact" class="btn btn-primary">Contact Us</a>
-                                </div>
+                            <!--end col-md-4-->
+    
+                            <div class="col-md-4">
+                                <figure v-for="feature in $i18n.messages[$i18n.locale].message.app_features.right" class="ts-xs-text-center" data-animate="ts-fadeInUp" data-delay=".3s">
+                                    <figure class="icon">
+                                        <img v-bind:src="feature.picture"  class="mobile-icons" alt="">
+                                    </figure>
+                                    <h4>{{ feature.title }}</h4>
+                                    <p>{{ feature.description }}</p>
+                                </figure>                                    
                             </div>
-                            <!--end card-->
+                            <!--end col-md-4-->
                         </div>
-                        <!--end price-box col-md-4-->
-
-                        <!--Price Box-->
-                        <div class="col-sm-4 col-lg-4">
-                            <div class="card text-center ts-price-box" data-animate="ts-fadeInUp" data-delay="0.2s">
-                                <div class="card-header p-0">
-                                    <h5 class="mb-0 py-3 text-white" data-bg-color="#7a9b97">Yummy</h5>
-                                    <div class="ts-title py-5 mb-0">
-                                        <h3 class="mb-0 font-weight-normal">
-                                            <sup>$</sup>19,99
-                                        </h3>
-                                        <small class="ts-opacity__50">per month</small >
-                                    </div>
-                                </div>
-                                <!--end card-header-->
-                                <div class="card-body p-0">
-                                    <ul class="list-unstyled ts-list-divided">
-                                        <li>12kg of food on your door</li>
-                                        <li>Advanced food tracking features</li>
-                                        <li>12 choices of products</li>
-                                        <li>Dedicated support</li>
-                                    </ul>
-                                    <!--end list-->
-                                </div>
-                                <!--end card-body-->
-                                <div class="card-footer bg-transparent pt-0 ts-border-none">
-                                    <a href="#contact" class="btn btn-outline-dark ts-btn-border-muted">Contact Us</a>
-                                </div>
-                            </div>
-                            <!--end card-->
-                        </div>
-                        <!--end price-box col-md-4-->
+                        <!--end row-->
                     </div>
-                    <!--end row-->
-                </div>
-                <!--end container-->
-            </section>
-            <!--END PRICING *****************************************************************************************-->
-
-            <!--OUR TEAM ********************************************************************************************-->
-            <section id="our-team" class="ts-block text-center">
-                <div class="container">
-                    <div class="ts-title">
-                        <h2>Our Team</h2>
+                    <!--end container-->
+                </section>
+                <!--END FEATURES ****************************************************************************************-->
+    
+                <!--ADVANCED FEATURES ***********************************************************************************-->
+                <section id="advanced-features" class="ts-block">   
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-5 col-xl-5" data-animate="ts-fadeInUp">
+                                <div class="ts-title">
+                                    <h2>{{ $t("message.titles.blockchain_agriculture") }}</h2>
+                                </div>
+                                <!--end ts-title-->
+                                <p>
+                                    Our platform registers the origin, processes and destination of the food ensuring full transparency in the supply chain
+                                </p>
+                                <ul class="ts-list-colored-bullets">
+                                    <li>Your yield is protected against fraud</li>
+                                    <li>Peace of mind. Your food IS organic</li>
+                                    <li>Trace the origin of the plants and supplies</li>
+                                </ul>
+                            </div>
+                            <!--end col-xl-5-->
+                            <div class="col-md-7 col-xl-7 text-center" data-animate="ts-fadeInUp" data-delay="0.1s">
+                                <div class="px-3">
+                                    <img src="https://agrocity.s3.amazonaws.com/assets/img/mockups/MOCKUP-DASHBOARD-PHONE-CROWDFUNDING.png" class="mw-100" alt="">
+                                </div>
+                            </div>
+                            <!--end col-xl-7-->
+                        </div>
+                        <!--end row-->
                     </div>
-                    <!--end ts-title-->
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="ts-element d-inline-block mb-4" data-animate="ts-fadeInLeft">
-                                <a href="https://www.linkedin.com/in/acrm/" class="ts-circle__md position-absolute ts-right__0 ts-top__0" data-bg-color="#ff6a6a">
-                                    <div class="text-white ts-h2">
-                                        <i class="fab fa-linkedin"></i>
-                                    </div>
-                                </a>
-                                <!--end small circle-->
-                                <div class="ts-circle__xxl ts-shadow__md mb-4" data-bg-image="https://agrocity.s3.amazonaws.com/assets/img/team/andres.jpg"></div>
-                                <!--end image circle-->
-                                <h4 class="my-2">Andrés Rojas</h4>
-                                <h5 class="ts-opacity__50">CTO</h5>
+                    <!--end container-->
+                </section>
+                <!--END ADVANCED FEATURES *******************************************************************************-->
+
+                <!--RESPONSIVE ***********************************************************************************-->
+                <section id="responsive" class="ts-block">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-7 col-xl-7 text-center" data-animate="ts-fadeInUp" data-delay="0.1s">
+                                <div class="px-3 mb-4">
+                                    <img src="https://agrocity.s3.amazonaws.com/assets/img/mockups/MOCKUP-DASHBOARD-DESKTOP.png" class="mw-100" alt="">
+                                </div>
                             </div>
-                            <!--end ts-element-->
-                        </div>
-                        <!--end col-md-4-->
-                        <div class="col-md-4">
-                            <div class="ts-element d-inline-block mb-4" data-animate="ts-fadeInLeft" data-delay=".1s">
-                                <a href="https://www.linkedin.com/in/dacarva" class="ts-circle__md position-absolute ts-right__0 ts-top__0" data-bg-color="#ff6a6a">
-                                    <div class="text-white ts-h2">
-                                        <i class="fab fa-linkedin"></i>
-                                    </div>
-                                </a>
-                                <!--end small circle-->
-                                <div class="ts-circle__xxl ts-shadow__md mb-4" data-bg-image="https://agrocity.s3.amazonaws.com/assets/img/team/david.jpg"></div>
-                                <!--end image circle-->
-                                <h4 class="my-2">David Carvajal</h4>
-                                <h5 class="ts-opacity__50">CEO</h5>
+                            <!--end col-xl-7-->
+                            <div class="col-md-5 col-xl-5" data-animate="ts-fadeInUp">
+                                <div class="ts-title">
+                                    <h2>{{ $t("message.titles.predict_yield") }}</h2>
+                                </div>
+                                <!--end ts-title-->
+                                <p>
+                                    <span style="font-weight: bold;">AGROCITY</span> aggregates the data of their growers and uses data analytics to have the largest data repository of hidroponic agriculture
+                                </p>
+                                <ul class="ts-list-colored-bullets">
+                                    <li>We think of every farm as a micro-lab </li>
+                                    <li>We compare the growth results of different products in different farms</li>
+                                    <li>Our AI estimates the best processes to optimize time and increase yield</li>
+                                </ul>
                             </div>
-                            <!--end ts-element-->
+                            <!--end col-xl-5-->
                         </div>
-                        <!--end col-md-4-->
-                        <div class="col-md-4">
-                            <div class="ts-element d-inline-block mb-4" data-animate="ts-fadeInLeft" data-delay=".2s">
-                                <a href="https://www.linkedin.com/in/jose-rafael-donado-vallejo-2a90a1b0/" class="ts-circle__md position-absolute ts-right__0 ts-top__0" data-bg-color="#ff6a6a">
-                                    <div class="text-white ts-h2">
-                                        <i class="fab fa-linkedin"></i>
-                                    </div>
-                                </a>
-                                <!--end small circle-->
-                                <div class="ts-circle__xxl ts-shadow__md mb-4" data-bg-image="https://agrocity.s3.amazonaws.com/assets/img/team/rafael.jpg"></div>
-                                <!--end image circle-->
-                                <h4 class="my-2">Rafael Donado</h4>
-                                <h5 class="ts-opacity__50">COO</h5>
-                            </div>
-                            <!--end ts-element-->
-                        </div>
-                        <!--end col-md-4-->
+                        <!--end row-->
                     </div>
-                    <!--end row-->
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="ts-element d-inline-block mb-4" data-animate="ts-fadeInLeft">
-                                <a href="https://www.linkedin.com/in/dianacarolinahurtadoh/" class="ts-circle__md position-absolute ts-right__0 ts-top__0" data-bg-color="#ff6a6a">
-                                    <div class="text-white ts-h2">
-                                        <i class="fab fa-linkedin"></i>
-                                    </div>
-                                </a>
-                                <!--end small circle-->
-                                <div class="ts-circle__xxl ts-shadow__md mb-4" data-bg-image="https://agrocity.s3.amazonaws.com/assets/img/team/diana.jpg"></div>
-                                <!--end image circle-->
-                                <h4 class="my-2">Diana Hurtado</h4>
-                                <h5 class="ts-opacity__50">GIS Engineer</h5>
-                            </div>
-                            <!--end ts-element-->
+                    <!--end container-->
+                </section>
+                <!--END ADVANCED FEATURES *******************************************************************************-->
+    
+                <!--PRICING *********************************************************************************************-->
+                <section id="pricing" class="ts-block ts-separate-bg-element" data-bg-image="https://agrocity.s3.amazonaws.com/assets/img/veggies.jpg" data-bg-color="#000" data-bg-image-opacity=".5" data-bg-parallax="scroll" data-bg-parallax-speed="3" data-mask-top-nw-color="#fff" data-mask-bottom-wn-color="#eaeaea">
+                    <div class="container">
+                        <div class="ts-title text-center text-white">
+                            <h2>{{ $t("message.titles.affordable_healthy") }}</h2>
                         </div>
-                        <!--end col-md-4-->
-                        <div class="col-md-4">
-                            <div class="ts-element d-inline-block mb-4" data-animate="ts-fadeInLeft" data-delay=".1s">
-                                <a href="https://www.linkedin.com/in/juansarmientoc/" class="ts-circle__md position-absolute ts-right__0 ts-top__0" data-bg-color="#ff6a6a">
-                                    <div class="text-white ts-h2">
-                                        <i class="fab fa-linkedin"></i>
+                        <!--end ts-title-->
+                        <div class="row no-gutters ts-cards-same-height">
+                            <!--Price Box-->
+                            <div class="col-sm-4 col-lg-4">
+                                <div class="card text-center ts-price-box" data-animate="ts-fadeInUp">
+                                    <div class="card-header p-0">
+                                        <h5 class="mb-0 py-3 text-white" data-bg-color="#7a9b97">Raw</h5>
+                                        <div class="ts-title py-5 mb-0">
+                                            <h3 class="mb-0 font-weight-normal">$9,99</h3>
+                                            <small class="ts-opacity__50">per month</small >
+                                        </div>
                                     </div>
-                                </a>
-                                <!--end small circle-->
-                                <div class="ts-circle__xxl ts-shadow__md mb-4" data-bg-image="https://agrocity.s3.amazonaws.com/assets/img/team/juan.jpg"></div>
-                                <!--end image circle-->
-                                <h4 class="my-2">Juan Sarmiento</h4>
-                                <h5 class="ts-opacity__50">Marketing</h5>
-                            </div>
-                            <!--end ts-element-->
-                        </div>
-                        <!--end col-md-4-->
-                        <div class="col-md-4">
-                            <div class="ts-element d-inline-block mb-4" data-animate="ts-fadeInLeft" data-delay=".2s">
-                                <a href="https://www.linkedin.com/in/maisabelmarinh/" class="ts-circle__md position-absolute ts-right__0 ts-top__0" data-bg-color="#ff6a6a">
-                                    <div class="text-white ts-h2">
-                                        <i class="fab fa-linkedin"></i>
+                                    <!--end card-header-->
+                                    <div class="card-body p-0">
+                                        <ul class="list-unstyled ts-list-divided">
+                                            <li>5kg of food on your door</li>
+                                            <li>Basic food tracking features</li>
+                                            <li>5 choices of products</li>
+                                            <li>Basic support</li>
+                                        </ul>
+                                        <!--end list-->
                                     </div>
-                                </a>
-                                <!--end small circle-->
-                                <div class="ts-circle__xxl ts-shadow__md mb-4" data-bg-image="https://agrocity.s3.amazonaws.com/assets/img/team/isabel.jpg"></div>
-                                <!--end image circle-->
-                                <h4 class="my-2">Isabel Marín</h4>
-                                <h5 class="ts-opacity__50">AgTech Engineer</h5>
+                                    <!--end card-body-->
+                                    <div class="card-footer bg-transparent pt-0 ts-border-none">
+                                        <a href="#contact" class="btn btn-outline-dark ts-btn-border-muted">Contact Us</a>
+                                    </div>
+                                </div>
+                                <!--end card-->
                             </div>
-                            <!--end ts-element-->
+                            <!--end price-box col-md-4-->
+    
+                            <!--Price Box Promoted-->
+                            <div class="col-sm-4 col-lg-4">
+                                <div class="card text-center ts-price-box ts-price-box__promoted" data-animate="ts-fadeInUp" data-delay="0.1s">
+                                    <div class="card-header p-0" data-bg-color="#ff6a6a">
+                                        <h5 class="mb-0 py-3 text-white" data-bg-color="#e55f5f">Cooked</h5>
+                                        <div class="ts-title text-white py-5 mb-0">
+                                            <h3 class="mb-0 font-weight-normal">
+                                                <sup>$</sup>14,99
+                                            </h3>
+                                            <small class="ts-opacity__50">per month</small >
+                                        </div>
+                                    </div>
+                                    <!--end card-header-->
+                                    <div class="card-body p-0">
+                                        <ul class="list-unstyled ts-list-divided">
+                                            <li>8kg of food on your door</li>
+                                            <li>Advanced food tracking features</li>
+                                            <li>8 choices of products</li>
+                                            <li>Premium support</li>
+                                        </ul>
+                                        <!--end list-->
+                                    </div>
+                                    <!--end card-body-->
+                                    <div class="card-footer bg-transparent pt-0 ts-border-none">
+                                        <a href="#contact" class="btn btn-primary">Contact Us</a>
+                                    </div>
+                                </div>
+                                <!--end card-->
+                            </div>
+                            <!--end price-box col-md-4-->
+    
+                            <!--Price Box-->
+                            <div class="col-sm-4 col-lg-4">
+                                <div class="card text-center ts-price-box" data-animate="ts-fadeInUp" data-delay="0.2s">
+                                    <div class="card-header p-0">
+                                        <h5 class="mb-0 py-3 text-white" data-bg-color="#7a9b97">Yummy</h5>
+                                        <div class="ts-title py-5 mb-0">
+                                            <h3 class="mb-0 font-weight-normal">
+                                                <sup>$</sup>19,99
+                                            </h3>
+                                            <small class="ts-opacity__50">per month</small >
+                                        </div>
+                                    </div>
+                                    <!--end card-header-->
+                                    <div class="card-body p-0">
+                                        <ul class="list-unstyled ts-list-divided">
+                                            <li>12kg of food on your door</li>
+                                            <li>Advanced food tracking features</li>
+                                            <li>12 choices of products</li>
+                                            <li>Dedicated support</li>
+                                        </ul>
+                                        <!--end list-->
+                                    </div>
+                                    <!--end card-body-->
+                                    <div class="card-footer bg-transparent pt-0 ts-border-none">
+                                        <a href="#contact" class="btn btn-outline-dark ts-btn-border-muted">Contact Us</a>
+                                    </div>
+                                </div>
+                                <!--end card-->
+                            </div>
+                            <!--end price-box col-md-4-->
                         </div>
-                        <!--end col-md-4-->
+                        <!--end row-->
                     </div>
-                    <!--end row-->                                      
-                </div>
-                <!--end container-->
-            </section>
-            <!--END OUR TEAM ****************************************************************************************-->
-
-        </main>
-        <!--end #content-->
-
-        <!--*********************************************************************************************************-->
-        <!--************ FOOTER *************************************************************************************-->
-        <!--*********************************************************************************************************-->
-        <footer id="ts-footer">
-
-            <div class="map ts-height__600px" id="map" data-mask-top-nw-color="#fff" data-mask-bottom-wn-color="#1f1f1f"></div>
-            <!--end map-->
-            <section id="contact" class="ts-block ts-background-is-dark ts-separate-bg-element" data-bg-image="https://agrocity.s3.amazonaws.com/assets/img/bg-desk.jpg" data-bg-image-opacity=".1" data-bg-color="#1f1f1f" data-mask-bottom-wn-color="#000">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <h3>Contact Us</h3>
-                            <address>
-                                <figure>
-                                    Calle 92 # 16-11
+                    <!--end container-->
+                </section>
+                <!--END PRICING *****************************************************************************************-->
+    
+                <!--OUR TEAM ********************************************************************************************-->
+                <section id="our-team" class="ts-block text-center">
+                    <div class="container">
+                        <div class="ts-title">
+                            <h2>{{ $t("message.titles.team") }}</h2>
+                        </div>
+                        <!--end ts-title-->
+                        <div class="row">
+                            <div v-for="member in team" class="col-md-4">
+                                <div class="ts-element d-inline-block mb-4" data-animate="ts-fadeInLeft">
+                                    <a v-bind:href="member.linkedin" class="ts-circle__md position-absolute ts-right__0 ts-top__0" data-bg-color="#ff6a6a">
+                                        <div class="text-white ts-h2">
+                                            <i class="fab fa-linkedin"></i>
+                                        </div>
+                                    </a>
+                                    <!--end small circle-->
+                                    <div class="ts-circle__xxl ts-shadow__md mb-4" v-bind:data-bg-image="member.picture"></div>
+                                    <!--end image circle-->
+                                    <h4 class="my-2">{{ member.name }}</h4>
+                                    <h5 class="ts-opacity__50">{{ member.position }}</h5>
+                                </div>
+                                <!--end ts-element-->
+                            </div>
+                            <!--end col-md-4-->
+                        </div>
+                        <!--end row-->     
+                    </div>
+                    <!--end container-->
+                </section>
+                <!--END OUR TEAM ****************************************************************************************-->
+    
+            </main>
+            <!--end #content-->
+    
+            <!--*********************************************************************************************************-->
+            <!--************ FOOTER *************************************************************************************-->
+            <!--*********************************************************************************************************-->
+            <footer id="ts-footer">
+    
+                <div class="map ts-height__600px" id="map" data-mask-top-nw-color="#fff" data-mask-bottom-wn-color="#1f1f1f"></div>
+                <!--end map-->
+                <section id="contact" class="ts-block ts-background-is-dark ts-separate-bg-element" data-bg-image="https://agrocity.s3.amazonaws.com/assets/img/bg-desk.jpg" data-bg-image-opacity=".1" data-bg-color="#1f1f1f" data-mask-bottom-wn-color="#000">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h3>{{ $t("message.contact.contact_us") }}</h3>
+                                <address>
+                                    <figure>
+                                        Calle 92 # 16-11
+                                        <br>
+                                        Bogotá, Colombia
+                                    </figure>
                                     <br>
-                                    Bogotá, Colombia
-                                </figure>
-                                <br>
-                                <figure>
-                                    <div class="font-weight-bold">Email:</div>
-                                    <a href="#">contact@cannvest.co</a>
-                                </figure>
-                                <figure>
-                                    <div class="font-weight-bold">Phone:</div>
-                                    +57 310-247-1354
-                                </figure>
-                                <div class="font-weight-bold">Social:</div>
-                                <a href="https://www.facebook.com/cannvest" class="social-icons">
-                                        <i class="fab fa-facebook"></i>
-                                </a>
-                                <a href="https://www.twitter.com/cannvest" class="social-icons">
-                                    <i class="fab fa-twitter"></i>
-                                </a>                                                                
-                                <a href="https://www.instagram.com/cnnvest" class="social-icons">
-                                    <i class="fab fa-instagram"></i>
-                                </a>                                
-                                <a href="https://www.linkedin.com/company/cannvest" class="social-icons">
-                                        <i class="fab fa-linkedin"></i>
-                                </a>                                                        
-                            </address>
-                            <!--end address-->
+                                    <figure>
+                                        <div class="font-weight-bold">{{ $t("message.contact.email") }}:</div>
+                                        <a href="#">contact@cannvest.co</a>
+                                    </figure>
+                                    <figure>
+                                        <div class="font-weight-bold">{{ $t("message.contact.phone") }}:</div>
+                                        +57 310-247-1354
+                                    </figure>
+                                    <div class="font-weight-bold">Social:</div>
+                                    <a href="https://www.facebook.com/cannvest" class="social-icons">
+                                            <i class="fab fa-facebook"></i>
+                                    </a>
+                                    <a href="https://www.twitter.com/cannvest" class="social-icons">
+                                        <i class="fab fa-twitter"></i>
+                                    </a>                                                                
+                                    <a href="https://www.instagram.com/cnnvest" class="social-icons">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>                                
+                                    <a href="https://www.linkedin.com/company/cannvest" class="social-icons">
+                                            <i class="fab fa-linkedin"></i>
+                                    </a>                                                        
+                                </address>
+                                <!--end address-->
+                            </div>
+                            <!--end col-md-4-->
+                            <div class="col-md-8">
+                                <h3>{{ $t("message.contact.contact_form") }}</h3>
+                                <!-- The form is submitted on Netlify -->
+                                <form id="form-contact" method="post" class="clearfix ts-form ts-form-email ts-inputs__transparent" data-netlify="true">
+                                    <div class="row">
+                                        <div class="col-md-6 col-sm-6">
+                                            <div class="form-group">
+                                                <label for="form-contact-name">{{ $t("message.contact.your_name") }} *</label>
+                                                <input type="text" class="form-control" id="form-contact-name" name="name" v-bind:placeholder="$t('message.contact.your_name')" required>
+                                            </div>
+                                            <!--end form-group -->
+                                        </div>
+                                        <!--end col-md-6 col-sm-6 -->
+                                        <div class="col-md-6 col-sm-6">
+                                            <div class="form-group">
+                                                <label for="form-contact-email">{{ $t("message.contact.your_email") }} *</label>
+                                                <input type="email" class="form-control" id="form-contact-email" name="email" v-bind:placeholder="$t('message.contact.your_email')" required>
+                                            </div>
+                                            <!--end form-group -->
+                                        </div>
+                                        <!--end col-md-6 col-sm-6 -->
+                                    </div>
+                                    <!--end row -->
+                                    <div class="row">
+                                        <div class="col-md-6 col-sm-6">
+                                            <div class="form-group">
+                                                <label for="form-contact-name">{{ $t("message.contact.i_am") }} *</label>
+                                                <select class="form-control" id="form-contact-profile" name="profile"required style="background-color: #1f1f1f; color:white">
+                                                    <option value="Grower">{{ $t("message.contact.grower") }}</option>
+                                                    <option value="Grower">{{ $t("message.contact.buyer") }}</option>
+                                                </select>
+                                            </div>
+                                            <!--end form-group -->
+                                        </div>
+                                        <!--end col-md-6 col-sm-6 -->
+                                    </div>
+                                    <!--end row -->                                
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="form-contact-message">{{ $t("message.contact.your_message") }} *</label>
+                                                <textarea class="form-control" id="form-contact-message" rows="5" name="message" v-bind:placeholder="$t('message.contact.your_message')" required></textarea>
+                                            </div>
+                                            <!--end form-group -->
+                                        </div>
+                                        <!--end col-md-12 -->
+                                    </div>
+                                    <!--end row -->
+                                    <div class="form-group clearfix">
+                                        <button type="submit" class="btn btn-primary float-right" id="form-contact-submit"><span>{{ $t("message.contact.send_message") }}</span></button>
+                                    </div>
+                                    <!--end form-group -->
+                                    <div class="form-contact-status"></div>
+                                </form>
+                                <!--end form-contact -->
+                            </div>
                         </div>
-                        <!--end col-md-4-->
-                        <div class="col-md-8">
-                            <h3>Contact Form</h3>
-                            <!-- The form is submitted on Netlify -->
-                            <form id="form-contact" method="post" class="clearfix ts-form ts-form-email ts-inputs__transparent" data-netlify="true">
-                                <div class="row">
-                                    <div class="col-md-6 col-sm-6">
-                                        <div class="form-group">
-                                            <label for="form-contact-name">Your Name *</label>
-                                            <input type="text" class="form-control" id="form-contact-name" name="name" placeholder="Your Name" required>
-                                        </div>
-                                        <!--end form-group -->
-                                    </div>
-                                    <!--end col-md-6 col-sm-6 -->
-                                    <div class="col-md-6 col-sm-6">
-                                        <div class="form-group">
-                                            <label for="form-contact-email">Your Email *</label>
-                                            <input type="email" class="form-control" id="form-contact-email" name="email" placeholder="Your Email" required>
-                                        </div>
-                                        <!--end form-group -->
-                                    </div>
-                                    <!--end col-md-6 col-sm-6 -->
-                                </div>
-                                <!--end row -->
-                                <div class="row">
-                                    <div class="col-md-6 col-sm-6">
-                                        <div class="form-group">
-                                            <label for="form-contact-name">I am a *</label>
-                                            <select class="form-control" id="form-contact-profile" name="profile"required style="background-color: #1f1f1f; color:white">
-                                                <option value="Grower">Grower</option>
-                                                <option value="Grower">Buyer</option>
-                                            </select>
-                                        </div>
-                                        <!--end form-group -->
-                                    </div>
-                                    <!--end col-md-6 col-sm-6 -->
-                                </div>
-                                <!--end row -->                                
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label for="form-contact-message">Your Message *</label>
-                                            <textarea class="form-control" id="form-contact-message" rows="5" name="message" placeholder="Your Message" required></textarea>
-                                        </div>
-                                        <!--end form-group -->
-                                    </div>
-                                    <!--end col-md-12 -->
-                                </div>
-                                <!--end row -->
-                                <div class="form-group clearfix">
-                                    <button type="submit" class="btn btn-primary float-right" id="form-contact-submit">Send a Message</button>
-                                </div>
-                                <!--end form-group -->
-                                <div class="form-contact-status"></div>
-                            </form>
-                            <!--end form-contact -->
-                        </div>
+                        <!--end row-->
                     </div>
-                    <!--end row-->
+                    <!--end container-->
+                </section>
+    
+                <div class="text-center text-white pb-5" data-bg-color="#000">
+                    <small>© 2020 AgroCity, All Rights Reserved</small>
                 </div>
-                <!--end container-->
-            </section>
-
-            <div class="text-center text-white pb-5" data-bg-color="#000">
-                <small>© 2020 AgroCity, All Rights Reserved</small>
-            </div>
-        </footer>
-        <!--end #footer-->
+            </footer>
+            <!--end #footer-->
+        </div>
     </div>
+
     <!--end page-->
 
+    <!-- VueJS -->
+    <script>
+        const messages = {
+            en: {
+                message: {
+                    hello: 'hello world',
+                    titles: {
+                        grow_organics: 'Grow Organics',
+                        buy_organics: 'Buy Organics',
+                        farm_pocket: 'A farm in your pocket',
+                        blockchain_agriculture: 'When blockchain meets agriculture',
+                        predict_yield: 'You can predict your yield',
+                        affordable_healthy: 'Affordable and Healthy',
+                        team: 'Our Team'
+                    },
+                    hero: {
+                        slogan: 'Fresh. Organic. Authentic'
+                    },
+                    buttons: {
+                        grow_with_us: 'Grow with us',
+                        buy_from_us: 'Buy from us',
+                    },
+                    nav: {
+                        home: 'Home',
+                        grow: 'Grow',
+                        buy: 'Buy',
+                        features: 'Features',
+                        team: 'Team',
+                        contact: 'Contact'
+                    },
+                    grow_organics_features: [
+                    {
+                        title: 'Rent your terrace',
+                        description: 'We rent your terrace space to install hydroponic farms',
+                        picture: 'https://agrocity.s3.amazonaws.com/assets/icons/Location.svg'
+                    },
+                    {
+                        title: 'Grow your food',
+                        description: 'Choose from our selection of organic products and grow them',
+                        picture: 'https://agrocity.s3.amazonaws.com/assets/icons/Irrigation.svg'
+                    },
+                    {
+                        title: 'Sell it and earn money',
+                        description: 'We connect you with buyers and collect the products',
+                        picture: 'https://agrocity.s3.amazonaws.com/assets/icons/Sell_products.svg'
+                    }                                        
+                    ],
+                    buy_organics_features: [
+                    {
+                        title: 'Choose your food',
+                        description: 'Choose your menu from the closest growers to you',
+                        picture: 'https://agrocity.s3.amazonaws.com/assets/icons/Increasing_number_of_product.svg'
+                    },
+                    {
+                        title: 'See how it grows near you',
+                        description: 'Follow the growth of your food with our app',
+                        picture: 'https://agrocity.s3.amazonaws.com/assets/icons/Water_moisture_control.svg'
+                    },
+                    {
+                        title: 'Enjoy!',
+                        description: 'Get fresh and healthy food from the closest growers',
+                        picture: 'https://agrocity.s3.amazonaws.com/assets/icons/Farmer.svg'
+                    }                      
+                ],
+                    app_features: {
+                        left: [
+                            {
+                                title: 'Monitor the Activity',
+                                description: 'Monitor the growth conditions of the hydroponic farm',
+                                picture: 'https://agrocity.s3.amazonaws.com/assets/icons/Climate_monitor.svg'
+                            },
+                            {
+                                title: 'Analyze Results',
+                                description: 'Improve the growth of your farm based on the data we collect',
+                                picture: 'https://agrocity.s3.amazonaws.com/assets/icons/Analysis_mapping.svg'
+                            },
+                            {
+                                title: 'Predict your yield',
+                                description: 'Get insights on your farm to predict the next yield',
+                                picture: 'https://agrocity.s3.amazonaws.com/assets/icons/Predictive.svg'
+                            }                            
+                        ],
+                        right: [
+                            {
+                                title: 'Blockchain traceability',
+                                description: 'Know what has happened with your products from seed to plate',
+                                picture: 'https://agrocity.s3.amazonaws.com/assets/icons/Blockchain.svg'
+                            },
+                            {
+                                title: 'Internet of Things',
+                                description: 'Get real time data of the crop using the farm sensors',
+                                picture: 'https://agrocity.s3.amazonaws.com/assets/icons/Smart_sensor.svg'
+                            },
+                            {
+                                title: 'Data Analytics',
+                                description: 'Check the current and future trends of the farms and market',
+                                picture: 'https://agrocity.s3.amazonaws.com/assets/icons/Prepare_soil_for_crop.svg'
+                            }                            
+                        ],                        
+                    },                    
+                    contact: {
+                        contact_us: "Contact Us",
+                        phone: "Phone",
+                        email: "Email",
+                        contact_form: "Contact Form",
+                        your_name: "Your Name",
+                        your_email: "Your Email",
+                        i_am: "I am a",
+                        grower: "Grower",
+                        buyer: "Buyer",
+                        your_message: "Your Message",
+                        send_message: "Go!"
+                    }
+                }
+            },
+            es: {
+                message: {
+                    hello: 'Hola mundo',
+                    titles: {
+                        grow_organics: 'Cultiva Orgánico',
+                        buy_organics: 'Compra Orgánico',
+                        farm_pocket: 'Una huerta en tu bolsillo',
+                        blockchain_agriculture: 'Tecnología blockchain aplicada a agricultura',
+                        predict_yield: 'Predicción de cosechas',
+                        affordable_healthy: 'Accesible y Saludable',
+                        team: 'Nuestro Equipo'                                             
+                    },
+                    hero: {
+                        slogan: 'Fresco. Orgánico. Auténtico'
+                    },                    
+                    buttons: {
+                        grow_with_us: 'Siembra con nosotros',
+                        buy_from_us: 'Compra de nosotros',                        
+                    },                    
+                    nav: {
+                        home: 'Inicio',
+                        grow: 'Crece',
+                        buy: 'Compra',
+                        features: 'Características',
+                        team: 'Equipo',
+                        contact: 'Contacto'
+                    },
+                    grow_organics_features: [
+                    {
+                        title: 'Alquila tu terraza',
+                        description: 'Alquila el espacio de tu terraza para instalar granas hidropónicas',
+                        picture: 'https://agrocity.s3.amazonaws.com/assets/icons/Location.svg'
+                    },
+                    {
+                        title: 'Crece tu comida',
+                        description: 'Escoge desde nuestra selección de productos orgánicos y cultívalos',
+                        picture: 'https://agrocity.s3.amazonaws.com/assets/icons/Irrigation.svg'
+                    },
+                    {
+                        title: 'Véndela y gana dinero',
+                        description: 'Te conectamos con compradores y recogemos tus productos',
+                        picture: 'https://agrocity.s3.amazonaws.com/assets/icons/Sell_products.svg'
+                    }                                        
+                    ],
+                    buy_organics_features: [
+                        {
+                        title: 'Escoge tus alimentos',
+                        description: 'Escoge tu menú del productor más cercano',
+                        picture: 'https://agrocity.s3.amazonaws.com/assets/icons/Increasing_number_of_product.svg'
+                        },
+                        {
+                            title: 'Mira como crecen cerca a ti',
+                            description: 'Sigue el crecimiento de tus alimentos a través de nuestra app',
+                            picture: 'https://agrocity.s3.amazonaws.com/assets/icons/Water_moisture_control.svg'
+                        },
+                        {
+                            title: '¡Disfruta!',
+                            description: 'Recibe comida fresca y saludable de los productores más cercanos',
+                            picture: 'https://agrocity.s3.amazonaws.com/assets/icons/Farmer.svg'
+                        }                      
+                    ],
+                    app_features: {
+                        left: [
+                            {
+                                title: 'Monitorea la Actividad',
+                                description: 'Monitorea las condiciones de crecimiento de la huerta hidropónica',
+                                picture: 'https://agrocity.s3.amazonaws.com/assets/icons/Climate_monitor.svg'
+                            },
+                            {
+                                title: 'Analiza Resultados',
+                                description: 'Mejora el crecimiento de la cosecha con base en los datos recolectados',
+                                picture: 'https://agrocity.s3.amazonaws.com/assets/icons/Analysis_mapping.svg'
+                            },
+                            {
+                                title: 'Predice tu cosecha',
+                                description: 'Obtén información de tu huerta para predecir tu próxima cosecha',
+                                picture: 'https://agrocity.s3.amazonaws.com/assets/icons/Predictive.svg'
+                            }                            
+                        ],
+                        right: [
+                            {
+                                title: 'Trazabilidad en Blockchain',
+                                description: 'Conoce lo que ha pasado con tus productos, de semilla a tu plato',
+                                picture: 'https://agrocity.s3.amazonaws.com/assets/icons/Blockchain.svg'
+                            },
+                            {
+                                title: 'Internet de las Cosas',
+                                description: 'Obtén información de la huerta en tiempo real a través de los sensores',
+                                picture: 'https://agrocity.s3.amazonaws.com/assets/icons/Smart_sensor.svg'
+                            },
+                            {
+                                title: 'Analítica de Datos',
+                                description: 'Mira las tendencias futuras de mercado y de tu huerta',
+                                picture: 'https://agrocity.s3.amazonaws.com/assets/icons/Prepare_soil_for_crop.svg'
+                            }                            
+                        ],                      
+                    },
+                    contact: {
+                        contact_us: "Contáctanos",
+                        phone: "Teléfono",
+                        email: "Correo Electrónico",
+                        contact_form: "Formulario de Contacto",
+                        your_name: "Tu Nombre",
+                        your_email: "Tu Correo Electrónico",
+                        i_am: "Soy un",
+                        grower: "Cultivador",
+                        buyer: "Comprador",
+                        your_message: "Tu mensaje",
+                        send_message: "Go!"
+                    }                              
+                }
+            }
+        }
+
+        const i18n = new VueI18n({
+            locale: 'es', // set locale
+            messages, // set locale messages
+        })
+
+        var app = new Vue({
+            i18n,
+            el: '#app',
+            data: {
+                testData: i18n.messages,
+                team: [
+                    {
+                        name: 'Andrés Rojas',
+                        position: 'CTO',
+                        picture: 'https://agrocity.s3.amazonaws.com/assets/img/team/andres.jpg',
+                        linkedin: 'https://www.linkedin.com/in/acrm/'
+                    },
+                    {
+                        name: 'David Carvajal',
+                        position: 'CEO',
+                        picture: 'https://agrocity.s3.amazonaws.com/assets/img/team/david.jpg',
+                        linkedin: 'https://www.linkedin.com/in/dacarva/'
+                    },
+                    {
+                        name: 'Rafael Donado',
+                        position: 'COO',
+                        picture: 'https://agrocity.s3.amazonaws.com/assets/img/team/rafael.jpg',
+                        linkedin: 'https://www.linkedin.com/in/jose-rafael-donado-vallejo-2a90a1b0/'
+                    },
+                    {
+                        name: 'Diana Hurtado',
+                        position: 'GIS Engineer',
+                        picture: 'https://agrocity.s3.amazonaws.com/assets/img/team/diana.jpg',
+                        linkedin: 'https://www.linkedin.com/in/dianacarolinahurtadoh/'
+                    },
+                    {
+                        name: 'Juan Sarmiento',
+                        position: 'Marketing',
+                        picture: 'https://agrocity.s3.amazonaws.com/assets/img/team/juan.jpg',
+                        linkedin: 'https://www.linkedin.com/in/juansarmientoc/'
+                    },
+                    {
+                        name: 'Isabel Marín',
+                        position: 'AgTech Engineer',
+                        picture: 'https://agrocity.s3.amazonaws.com/assets/img/team/isabel.jpg',
+                        linkedin: 'https://www.linkedin.com/in/maisabelmarinh/'
+                    },                                                                                                    
+                ],
+                buy_ogranics_features: [
+                    {
+                        title: 'Choose your food',
+                        description: 'Choose your menu from the closest growers to you',
+                        picture: 'https://agrocity.s3.amazonaws.com/assets/icons/Increasing_number_of_product.svg'
+                    },
+                    {
+                        title: 'See how it grows near you',
+                        description: 'Follow the growth of your food with our app',
+                        picture: 'https://agrocity.s3.amazonaws.com/assets/icons/Water_moisture_control.svg'
+                    },
+                    {
+                        title: 'See how it grows near you',
+                        description: 'Get fresh and healthy food from the closest growers',
+                        picture: 'https://agrocity.s3.amazonaws.com/assets/icons/Farmer.svg'
+                    }                      
+                ]                
+            },
+            methods: {
+                switchLocale () {
+                    if (this.$i18n.locale === 'es') {
+                        this.$i18n.locale = 'en'
+                    } else {
+                        this.$i18n.locale = 'es'
+                    }
+                }                
+            },
+            computed: {
+                displayLocale () {
+                    let other = 'https://agrocity.s3.amazonaws.com/assets/icons/flags/es.svg'
+                    if (this.$i18n.locale === 'es') {
+                        other = 'https://agrocity.s3.amazonaws.com/assets/icons/flags/us.svg'
+                    }
+                    return other
+                },
+            }                
+        })
+    </script>
+    
     <script>
         if( document.getElementsByClassName("ts-full-screen").length ) {
             document.getElementsByClassName("ts-full-screen")[0].style.height = window.innerHeight + "px";
