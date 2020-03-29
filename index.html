@@ -207,12 +207,12 @@
                                 </div>
                                 <!--end ts-title-->
                                 <p>
-                                    Our platform registers the origin, processes and destination of the food ensuring full transparency in the supply chain
+                                    {{ $t("message.advanced_features.blockchain.description") }}
                                 </p>
                                 <ul class="ts-list-colored-bullets">
-                                    <li>Your yield is protected against fraud</li>
-                                    <li>Peace of mind. Your food IS organic</li>
-                                    <li>Trace the origin of the plants and supplies</li>
+                                    <li >{{ $t("message.advanced_features.blockchain.features[0]") }}</li>
+                                    <li>{{ $t("message.advanced_features.blockchain.features[1]") }}</li>
+                                    <li>{{ $t("message.advanced_features.blockchain.features[2]") }}</li>
                                 </ul>
                             </div>
                             <!--end col-xl-5-->
@@ -245,12 +245,12 @@
                                 </div>
                                 <!--end ts-title-->
                                 <p>
-                                    <span style="font-weight: bold;">AGROCITY</span> aggregates the data of their growers and uses data analytics to have the largest data repository of hidroponic agriculture
+                                    {{ $t("message.advanced_features.analytics.description") }}
                                 </p>
                                 <ul class="ts-list-colored-bullets">
-                                    <li>We think of every farm as a micro-lab </li>
-                                    <li>We compare the growth results of different products in different farms</li>
-                                    <li>Our AI estimates the best processes to optimize time and increase yield</li>
+                                    <li >{{ $t("message.advanced_features.analytics.features[0]") }}</li>
+                                    <li>{{ $t("message.advanced_features.analytics.features[1]") }}</li>
+                                    <li>{{ $t("message.advanced_features.analytics.features[2]") }}</li>
                                 </ul>
                             </div>
                             <!--end col-xl-5-->
@@ -615,7 +615,26 @@
                                 picture: 'https://agrocity.s3.amazonaws.com/assets/icons/Prepare_soil_for_crop.svg'
                             }                            
                         ],                        
-                    },                    
+                    },
+                    advanced_features: {
+                        blockchain: {
+                            description: 'Our platform registers the origin, processes and destination of the food ensuring full transparency in the supply chain',
+                            features: [
+                                'Your yield is protected against fraud',
+                                'Peace of mind. Your food IS organic',
+                                'Trace the origin of the plants and supplies'
+                            ]
+                        },
+                        analytics: {
+                            description: 'AGROCITY aggregates the data of their growers and uses data analytics to have the largest data repository of hidroponic agriculture',
+                            features: [
+                                'We think of every farm as a micro-lab',
+                                'We compare the growth results of different products in different farms',
+                                'Our AI estimates the best processes to optimize time and increase yield'
+                            ]
+                        },                        
+                    },
+                    pricing: {},
                     contact: {
                         contact_us: "Contact Us",
                         phone: "Phone",
@@ -728,6 +747,25 @@
                             }                            
                         ],                      
                     },
+                    advanced_features: {
+                        blockchain: {
+                            description: 'Nuestra plataforma registra el origen, procesos y destino de los alimentos, asegurando una total transparencia en la cadena de suministros',
+                            features: [
+                                'Tu cosecha está protegida contra fraude',
+                                'Tranquilo. Tus alimentos SON orgánicos',
+                                'Traza el origen de las plantas y los insumos'
+                            ]
+                        },
+                        analytics: {
+                            description: 'AGROCITY agrega los datos de sus cultivadores y usa analítica de datos para tener el repositorio de datos más grande para agricultura hidropónica',
+                            features: [
+                                'Creemos que todas las huertas son un micro laboratorio',
+                                'Comparamos los resultados de crecimiento de diferentes productos en diferentes huertas',
+                                'Nuestra IA estima los mejores procesos para optimizar tiempo e incrementar la cosecha'
+                            ]
+                        },                        
+                    },                    
+                    pricing: {},
                     contact: {
                         contact_us: "Contáctanos",
                         phone: "Teléfono",
