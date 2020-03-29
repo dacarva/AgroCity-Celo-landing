@@ -269,96 +269,48 @@
                         </div>
                         <!--end ts-title-->
                         <div class="row no-gutters ts-cards-same-height">
-                            <!--Price Box-->
-                            <div class="col-sm-4 col-lg-4">
-                                <div class="card text-center ts-price-box" data-animate="ts-fadeInUp">
-                                    <div class="card-header p-0">
-                                        <h5 class="mb-0 py-3 text-white" data-bg-color="#7a9b97">Raw</h5>
+                            <!-- Vue Testing -->
+                            <div v-for="pricing in $i18n.messages[$i18n.locale].message.pricing" class="col-sm-4 col-lg-4">
+                                <div class="card text-center ts-price-box" v-bind:class="[(pricing.title === 'Cooked') ? 'ts-price-box__promoted' : '',(pricing.title === 'Cocido') ? 'ts-price-box__promoted' : '' ]" data-animate="ts-fadeInUp" data-delay="0.2s">
+                                    <!-- Price Box -->
+                                    <div v-if="pricing.title !== 'Cooked' && pricing.title !== 'Cocido'" class="card-header p-0">
+                                        <h5 class="mb-0 py-3 text-white" data-bg-color="#7a9b97">{{ pricing.title }}</h5>
                                         <div class="ts-title py-5 mb-0">
-                                            <h3 class="mb-0 font-weight-normal">$9,99</h3>
-                                            <small class="ts-opacity__50">per month</small >
+                                            <h3 class="mb-0 font-weight-normal">
+                                                <sup>$</sup>{{ pricing.price }}
+                                            </h3>
+                                            <small class="ts-opacity__50">{{ pricing.per_month }}</small >
                                         </div>
-                                    </div>
-                                    <!--end card-header-->
-                                    <div class="card-body p-0">
-                                        <ul class="list-unstyled ts-list-divided">
-                                            <li>5kg of food on your door</li>
-                                            <li>Basic food tracking features</li>
-                                            <li>5 choices of products</li>
-                                            <li>Basic support</li>
-                                        </ul>
-                                        <!--end list-->
-                                    </div>
-                                    <!--end card-body-->
-                                    <div class="card-footer bg-transparent pt-0 ts-border-none">
-                                        <a href="#contact" class="btn btn-outline-dark ts-btn-border-muted">Contact Us</a>
-                                    </div>
-                                </div>
-                                <!--end card-->
-                            </div>
-                            <!--end price-box col-md-4-->
-    
-                            <!--Price Box Promoted-->
-                            <div class="col-sm-4 col-lg-4">
-                                <div class="card text-center ts-price-box ts-price-box__promoted" data-animate="ts-fadeInUp" data-delay="0.1s">
-                                    <div class="card-header p-0" data-bg-color="#ff6a6a">
-                                        <h5 class="mb-0 py-3 text-white" data-bg-color="#e55f5f">Cooked</h5>
+                                    </div>    
+
+                                    <!-- Price Box promoted -->
+                                    <div v-else  class="card-header p-0" style="background-color: #ff6a6a;">
+                                        <h5 class="mb-0 py-3 text-white" style="background-color: #e55f5f;">{{ pricing.title }}</h5>
                                         <div class="ts-title text-white py-5 mb-0">
                                             <h3 class="mb-0 font-weight-normal">
-                                                <sup>$</sup>14,99
+                                                <sup>$</sup>{{ pricing.price }}
                                             </h3>
-                                            <small class="ts-opacity__50">per month</small >
+                                            <small class="ts-opacity__50">{{ pricing.per_month }}</small >
                                         </div>
                                     </div>
+                                    
+                                  
                                     <!--end card-header-->
                                     <div class="card-body p-0">
                                         <ul class="list-unstyled ts-list-divided">
-                                            <li>8kg of food on your door</li>
-                                            <li>Advanced food tracking features</li>
-                                            <li>8 choices of products</li>
-                                            <li>Premium support</li>
+                                            <li v-for="feature in pricing.features">{{ feature }}</li>
                                         </ul>
                                         <!--end list-->
                                     </div>
                                     <!--end card-body-->
                                     <div class="card-footer bg-transparent pt-0 ts-border-none">
-                                        <a href="#contact" class="btn btn-primary">Contact Us</a>
+                                        <a v-if="pricing.title === 'Cooked' || pricing.title === 'Cocido'" href="#contact" class="btn btn-primary">{{ $t("message.contact.contact_us") }}</a>
+                                        <a v-else href="#contact" class="btn btn-outline-dark ts-btn-border-muted">{{ $t("message.contact.contact_us") }}</a>
                                     </div>
                                 </div>
                                 <!--end card-->
-                            </div>
-                            <!--end price-box col-md-4-->
-    
-                            <!--Price Box-->
-                            <div class="col-sm-4 col-lg-4">
-                                <div class="card text-center ts-price-box" data-animate="ts-fadeInUp" data-delay="0.2s">
-                                    <div class="card-header p-0">
-                                        <h5 class="mb-0 py-3 text-white" data-bg-color="#7a9b97">Yummy</h5>
-                                        <div class="ts-title py-5 mb-0">
-                                            <h3 class="mb-0 font-weight-normal">
-                                                <sup>$</sup>19,99
-                                            </h3>
-                                            <small class="ts-opacity__50">per month</small >
-                                        </div>
-                                    </div>
-                                    <!--end card-header-->
-                                    <div class="card-body p-0">
-                                        <ul class="list-unstyled ts-list-divided">
-                                            <li>12kg of food on your door</li>
-                                            <li>Advanced food tracking features</li>
-                                            <li>12 choices of products</li>
-                                            <li>Dedicated support</li>
-                                        </ul>
-                                        <!--end list-->
-                                    </div>
-                                    <!--end card-body-->
-                                    <div class="card-footer bg-transparent pt-0 ts-border-none">
-                                        <a href="#contact" class="btn btn-outline-dark ts-btn-border-muted">Contact Us</a>
-                                    </div>
-                                </div>
-                                <!--end card-->
-                            </div>
-                            <!--end price-box col-md-4-->
+                            </div>                            
+
                         </div>
                         <!--end row-->
                     </div>
@@ -521,7 +473,6 @@
         const messages = {
             en: {
                 message: {
-                    hello: 'hello world',
                     titles: {
                         grow_organics: 'Grow Organics',
                         buy_organics: 'Buy Organics',
@@ -634,7 +585,26 @@
                             ]
                         },                        
                     },
-                    pricing: {},
+                    pricing: [
+                        {
+                            title: 'Raw',
+                            per_month: 'per month',
+                            price: '9,99',
+                            features: ['5kg of food on your door','Basic food tracking features','5 choices of products','Basic support']
+                        },
+                        {
+                            title: 'Cooked',
+                            per_month: 'per month',
+                            price: '14,99',
+                            features: ['8kg of food on your door','Advanced food tracking features','8 choices of products','Premium support']                            
+                        },
+                        {
+                            title: 'Yummy',
+                            per_month: 'per month',
+                            price: '19,99',
+                            features: ['12kg of food on your door','Advanced food tracking features','12 choices of products','Dedicated support']                            
+                        }
+                    ],
                     contact: {
                         contact_us: "Contact Us",
                         phone: "Phone",
@@ -652,7 +622,6 @@
             },
             es: {
                 message: {
-                    hello: 'Hola mundo',
                     titles: {
                         grow_organics: 'Cultiva Orgánico',
                         buy_organics: 'Compra Orgánico',
@@ -765,7 +734,26 @@
                             ]
                         },                        
                     },                    
-                    pricing: {},
+                    pricing: [
+                    {
+                            title: 'Crudo',
+                            per_month: 'al mes',
+                            price: '40,000',
+                            features: ['5kg de alimentos en tu puerta','Seguimiento básico de cultivo','5 alternativas de productos','Soporte Básico']
+                        },
+                        {
+                            title: 'Cocido',
+                            per_month: 'al mes',
+                            price: '60,000',
+                            features: ['8kg de alimentos en tu puerta','Seguimiento avanzado de cultivo','8 alternativas de productos','Soporte Premium']                            
+                        },
+                        {
+                            title: 'Yummy',
+                            per_month: 'al mes',
+                            price: '80,000',
+                            features: ['12kg de alimentos en tu puerta','Seguimiento avanzado de cultivo','12 alternativas de productos','Soporte Dediuca']                            
+                        }
+                    ],
                     contact: {
                         contact_us: "Contáctanos",
                         phone: "Teléfono",
