@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="author" content="AgroCity">
+    
+    <link rel="icon" href="https://agrocity.s3.amazonaws.com/assets/img/Cannvest_Isotipo_Transparente.png">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,500,600">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha256-L/W5Wfqfa0sdBNIKN9cG6QA5F2qx4qICmU2VgLruv9Y=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" integrity="sha256-PZLhE6wwMbg4AB3d35ZdBF9HD/dI/y4RazA3iRDurss=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css" integrity="sha256-fDncdclXlALqR3HOO34OGHxek91q8ApmD3gGldM+Rng=" crossorigin="anonymous" />        
+    <link rel="stylesheet" href="https://agrocity.s3.amazonaws.com/assets/css/fonts.css">
+    <link rel="stylesheet" href="https://agrocity.s3.amazonaws.com/assets/css/style.css">
+    <title>AgroCity - Traceable organic food</title>
+    <!-- Mounting Vue JS and i18n -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-i18n/dist/vue-i18n.js"></script>
+
+    <style>
+        .brand-text {
+            font-family: 'Gotham';
+            font-weight: bold;
+            display: inline;
+        }
+        .top-logo{
+            width: 50px;
+        }
+        .social-icons{
+            color:white;
+            font-size: 1.5em;
+            margin-left:0.15em;
+            margin-right:0.15em            
+        }
+        .feature-icons {
+            max-width: 220px;
+        }
+        .mobile-icons {
+            max-width: 80px;
+        }
+    </style>
+</head>
+<body data-spy="scroll" data-target=".navbar" class="has-loading-screen">   
+    <div id="app">
+        <div class="ts-page-wrapper" id="page-top">
+
+            <!--*********************************************************************************************************-->
+            <!--************ HERO ***************************************************************************************-->
+            <!--*********************************************************************************************************-->
+            <header id="ts-hero" class="ts-full-screen ts-separate-bg-element" data-mask-bottom-wn-color="#fff" data-bg-image="https://agrocity.s3.amazonaws.com/assets/img/leaf.jpg" data-bg-color="#737373" data-bg-image-opacity=".8" data-bg-parallax="scroll" data-bg-parallax-speed="3">
+
+                <!--NAVIGATION ******************************************************************************************-->
+                <nav class="navbar navbar-expand-lg navbar-dark fixed-top ts-separate-bg-element" data-bg-color="#1d1d1d">
+                    <div class="container">
+                        <a class="navbar-brand" href="#page-top">
+                            <img src="https://agrocity.s3.amazonaws.com/assets/img/cannvest-isotipo.svg" class="top-logo" alt="Cannvest Logo">
+                            <h2 class="brand-text">AgroCity</h2>
+                        </a>
+                        <!--end navbar-brand-->
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <!--end navbar-toggler-->
+                        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                            <div class="navbar-nav ml-auto">
+                                <a class="nav-item nav-link ts-scroll" href="index.html">{{ $t("message.nav.home") }}</a>
+                                <a class="nav-item nav-link active ts-scroll" href="about.html">{{ $t("message.nav.about") }}</a>
+
+                                <!-- Locale toggler -->
+                                <img v-bind:src="displayLocale" v-on:click="switchLocale()" style="width: 25px;" alt="Locale flag">
+                            </div>
+                            <!--end navbar-nav-->
+                        </div>
+                        <!--end collapse-->
+                    </div>
+                    <!--end container-->
+                </nav>
+                <!--end navbar-->
+    
+                <!--HERO CONTENT ****************************************************************************************-->
+                <div class="container align-self-center align-items-center">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h3 class="ts-opacity__80">Agrocity</h3>
+                            <h1>{{ $t("message.hero.slogan") }}</h1>
+                        </div>
+                    </div>
+                </div>
+                <!--end container-->
+            </header>
+            <!--end #hero-->
+    
+            <!--*********************************************************************************************************-->
+            <!--************ CONTENT ************************************************************************************-->
+            <!--*********************************************************************************************************-->
+            <main id="ts-content">
+                <!--MISSION ***********************************************************************************-->
+                <section id="mission" class="ts-block">   
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-5 col-xl-5" data-animate="ts-fadeInUp">
+                                <div class="ts-title">
+                                    <h2>{{ $t("message.titles.mission") }}</h2>
+                                </div>
+                                <!--end ts-title-->
+                                <p>
+                                    {{ $t("message.mission") }}
+                                </p>
+                            </div>
+                            <!--end col-xl-5-->
+                            <div class="col-md-7 col-xl-7 text-center" data-animate="ts-fadeInUp" data-delay="0.1s">
+                                <div class="px-3">
+                                    <img src="https://agrocity.s3.amazonaws.com/assets/img/kid-harvest.jpg" class="mw-100" alt="">
+                                </div>
+                            </div>
+                            <!--end col-xl-7-->
+                        </div>
+                        <!--end row-->
+                    </div>
+                    <!--end container-->
+                </section>
+                <!--END MISSION *******************************************************************************-->
+
+                <!--VISION ***********************************************************************************-->
+                <section id="vision" class="ts-block">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-7 col-xl-7 text-center" data-animate="ts-fadeInUp" data-delay="0.1s">
+                                <div class="px-3 mb-4">
+                                    <img src="https://agrocity.s3.amazonaws.com/assets/img/clones.jpg" class="mw-100" alt="">
+                                </div>
+                            </div>
+                            <!--end col-xl-7-->
+                            <div class="col-md-5 col-xl-5" data-animate="ts-fadeInUp">
+                                <div class="ts-title">
+                                    <h2>{{ $t("message.titles.vision") }}</h2>
+                                </div>
+                                <!--end ts-title-->
+                                <p>
+                                    {{ $t("message.vision") }}
+                                </p>
+                            </div>
+                            <!--end col-xl-5-->
+                        </div>
+                        <!--end row-->
+                    </div>
+                    <!--end container-->
+                </section>
+                <!--END VISION *******************************************************************************-->                    
+                <!--OUR TEAM ********************************************************************************************-->
+                <section id="our-team" class="ts-block text-center">
+                    <div class="container">
+                        <div class="ts-title">
+                            <h2>{{ $t("message.titles.team") }}</h2>
+                        </div>
+                        <!--end ts-title-->
+
+                        <div v-for="member in $i18n.messages[$i18n.locale].message.team" class="row">
+                            <div class="col-md-4 col-xl-4 text-center" data-animate="ts-fadeInUp" data-delay="0.1s">
+                                <div class="px-3 mb-4">
+                                    <a v-bind:href="member.linkedin" class="ts-circle__md position-absolute ts-right__0 ts-top__0" data-bg-color="#ff6a6a">
+                                        <div class="text-white ts-h2">
+                                            <i class="fab fa-linkedin"></i>
+                                        </div>
+                                    </a>
+                                    <!--end small circle-->
+                                    <div class="ts-circle__xxl ts-shadow__md mb-4" v-bind:data-bg-image="member.picture"></div>
+                                    <!--end image circle-->
+
+                                </div>
+                            </div>
+                            <!--end col-xl-4-->
+                            <div class="col-md-8 col-xl-8" data-animate="ts-fadeInUp">
+                                <div class="ts-title">
+                                    <h4 class="my-2">{{ member.name }}</h4>
+                                    <h5 class="ts-opacity__50">{{ member.position }}</h5>
+                                    <p>{{ member.description }}</p>                             
+                                </div>
+                                <!--end ts-title-->
+                            </div>
+                            <!--end col-xl-8-->
+                        </div>
+                        <!--end row--> 
+                        
+                    </div>
+                    <!--end container-->
+                </section>
+                <!--END OUR TEAM ****************************************************************************************-->
+    
+            </main>
+            <!--end #content-->
+    
+            <!--*********************************************************************************************************-->
+            <!--************ FOOTER *************************************************************************************-->
+            <!--*********************************************************************************************************-->
+            <footer id="ts-footer">
+                <section id="contact" class="ts-block ts-background-is-dark ts-separate-bg-element" data-bg-image="https://agrocity.s3.amazonaws.com/assets/img/bg-desk.jpg" data-bg-image-opacity=".1" data-bg-color="#1f1f1f" data-mask-bottom-wn-color="#000">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h3>{{ $t("message.contact.contact_us") }}</h3>
+                                <address>
+                                    <figure>
+                                        Calle 92 # 16-11
+                                        <br>
+                                        Bogotá, Colombia
+                                    </figure>
+                                    <br>
+                                    <figure>
+                                        <div class="font-weight-bold">{{ $t("message.contact.email") }}:</div>
+                                        <a href="#">contact@cannvest.co</a>
+                                    </figure>
+                                    <figure>
+                                        <div class="font-weight-bold">{{ $t("message.contact.phone") }}:</div>
+                                        +57 310-247-1354
+                                    </figure>
+                                    <div class="font-weight-bold">Social:</div>
+                                    <a v-for="network in social" v-bind:href="network.url" class="social-icons">
+                                        <i class="fab" v-bind:class="network.icon"></i>
+                                    </a>                                                 
+                                </address>
+                                <!--end address-->
+                            </div>
+                            <!--end col-md-4-->
+                            <div class="col-md-8">
+                                <h3>{{ $t("message.contact.contact_form") }}</h3>
+                                <!-- The form is submitted on Netlify -->
+                                <form id="form-contact" method="post" class="clearfix ts-form ts-form-email ts-inputs__transparent" data-netlify="true">
+                                    <div class="row">
+                                        <div class="col-md-6 col-sm-6">
+                                            <div class="form-group">
+                                                <label for="form-contact-name">{{ $t("message.contact.your_name") }} *</label>
+                                                <input type="text" class="form-control" id="form-contact-name" name="name" v-bind:placeholder="$t('message.contact.your_name')" required>
+                                            </div>
+                                            <!--end form-group -->
+                                        </div>
+                                        <!--end col-md-6 col-sm-6 -->
+                                        <div class="col-md-6 col-sm-6">
+                                            <div class="form-group">
+                                                <label for="form-contact-email">{{ $t("message.contact.your_email") }} *</label>
+                                                <input type="email" class="form-control" id="form-contact-email" name="email" v-bind:placeholder="$t('message.contact.your_email')" required>
+                                            </div>
+                                            <!--end form-group -->
+                                        </div>
+                                        <!--end col-md-6 col-sm-6 -->
+                                    </div>
+                                    <!--end row -->
+                                    <div class="row">
+                                        <div class="col-md-6 col-sm-6">
+                                            <div class="form-group">
+                                                <label for="form-contact-name">{{ $t("message.contact.i_am") }} *</label>
+                                                <select class="form-control" id="form-contact-profile" name="profile"required style="background-color: #1f1f1f; color:white">
+                                                    <option value="Grower">{{ $t("message.contact.grower") }}</option>
+                                                    <option value="Grower">{{ $t("message.contact.buyer") }}</option>
+                                                </select>
+                                            </div>
+                                            <!--end form-group -->
+                                        </div>
+                                        <!--end col-md-6 col-sm-6 -->
+                                    </div>
+                                    <!--end row -->                                
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="form-contact-message">{{ $t("message.contact.your_message") }} *</label>
+                                                <textarea class="form-control" id="form-contact-message" rows="5" name="message" v-bind:placeholder="$t('message.contact.your_message')" required></textarea>
+                                            </div>
+                                            <!--end form-group -->
+                                        </div>
+                                        <!--end col-md-12 -->
+                                    </div>
+                                    <!--end row -->
+                                    <div class="form-group clearfix">
+                                        <button type="submit" class="btn btn-primary float-right" id="form-contact-submit"><span>{{ $t("message.contact.send_message") }}</span></button>
+                                    </div>
+                                    <!--end form-group -->
+                                    <div class="form-contact-status"></div>
+                                </form>
+                                <!--end form-contact -->
+                            </div>
+                        </div>
+                        <!--end row-->
+                    </div>
+                    <!--end container-->
+                </section>
+    
+                <div class="text-center text-white pb-5" data-bg-color="#000">
+                    <small>© 2020 AgroCity, All Rights Reserved</small>
+                </div>
+            </footer>
+            <!--end #footer-->
+        </div>
+    </div>
+
+    <!--end page-->
+
+    <!-- VueJS -->
+    <script>
+        const messages = {
+            en: {
+                message: {
+                    titles: {
+                        mission: 'Our Mission',
+                        vision: 'Our Vision',
+                        team: 'Our Team'
+                    },
+                    mission: 'At AgroCity we are working to ensure that every person living a city have food security in a natural and transparent way',
+                    vision: 'We believe that the cities can be greener and their people can be healthier by growing and sharing their own organic food',
+                    hero: {
+                        slogan: 'About Us'
+                    },
+                    nav: {
+                        home: 'Home',
+                        about: 'About'
+                    },
+                    team: [
+                    {
+                        name: 'Andrés Rojas',
+                        position: 'CTO',
+                        picture: 'https://agrocity.s3.amazonaws.com/assets/img/team/andres.jpg',
+                        description: 'Great Team member',
+                        linkedin: 'https://www.linkedin.com/in/acrm/'
+                    },
+                    {
+                        name: 'David Carvajal',
+                        position: 'CEO',
+                        picture: 'https://agrocity.s3.amazonaws.com/assets/img/team/david.jpg',
+                        description: 'Mechanical and Electronics Engineer with Masters degree and over 9 years of experience in product development and entrepreneurship in high technology. With Research experience in Nanotechnology, in the areas of Atomic Force Microscopy and nanocoatings development. Has led worldwide teams in equipment design, testing and deployment for the Oil & Gas industry. With experience in web development, data analytics, IoT and most recently Blockchain applications development.',
+                        linkedin: 'https://www.linkedin.com/in/dacarva/'
+                    },
+                    {
+                        name: 'Rafael Donado',
+                        position: 'COO',
+                        picture: 'https://agrocity.s3.amazonaws.com/assets/img/team/rafael.jpg',
+                        description: 'Industrial Engineer with Masters degree and over 8 years of experience in finance, analyzing investment opportunities in leading companies in Latin America. Participated in the structuring of over US $300m in debt, equity and mezzanine financing across sectors including health, education, agriculture and manufacturing. Entrepreneur and cofounder of several initiatives focused on social impact.',
+                        linkedin: 'https://www.linkedin.com/in/jose-rafael-donado-vallejo-2a90a1b0/'
+                    },
+                    {
+                        name: 'Diana Hurtado',
+                        position: 'GIS Engineer',
+                        picture: 'https://agrocity.s3.amazonaws.com/assets/img/team/diana.jpg',
+                        description: 'Great Team member',
+                        linkedin: 'https://www.linkedin.com/in/dianacarolinahurtadoh/'
+                    },
+                    {
+                        name: 'Juan Sarmiento',
+                        position: 'Marketing',
+                        picture: 'https://agrocity.s3.amazonaws.com/assets/img/team/juan.jpg',
+                        description: 'Industrial Engineer from Universidad de Los Andes with emphasis in the finance and production areas. Experience in the oil sector, in which he did the internship carrying out financial and administrative labors. Currently he focuses his activities in the finance and marketing areas of the technology sector with the objective of learning different efficient marketing techniques that grow up the finances of the company.',
+                        linkedin: 'https://www.linkedin.com/in/juansarmientoc/'
+                    },
+                    {
+                        name: 'Isabel Marín',
+                        position: 'AgTech Engineer',
+                        picture: 'https://agrocity.s3.amazonaws.com/assets/img/team/isabel.jpg',
+                        description: 'Great Team member',
+                        linkedin: 'https://www.linkedin.com/in/maisabelmarinh/'
+                    },                                                                                                    
+                ],                   
+                    contact: {
+                        contact_us: "Contact Us",
+                        phone: "Phone",
+                        email: "Email",
+                        contact_form: "Contact Form",
+                        your_name: "Your Name",
+                        your_email: "Your Email",
+                        i_am: "I am a",
+                        grower: "Grower",
+                        buyer: "Buyer",
+                        your_message: "Your Message",
+                        send_message: "Go!"
+                    }
+                }
+            },
+            es: {
+                message: {
+                    titles: {
+                        team: 'Nuestro Equipo',
+                        mission: 'Nuestra Misión',
+                        vision: 'Nuestra Visión',                        
+                    },
+                    mission: 'Asegurar la seguridad de cada habitante de cada ciudad de una forma natural transparente.',
+                    vision: 'Creemos que las ciudades pueden ser más verdes y su gente más feliz cultivando y compartiendo su propios alimentos orgánicos.',                    
+                    hero: {
+                        slogan: 'Quienes somos'
+                    },                                
+                    nav: {
+                        home: 'Inicio',
+                        about: 'Nosotros'
+                    },
+                    team: [
+                    {
+                        name: 'Andrés Rojas',
+                        position: 'CTO',
+                        picture: 'https://agrocity.s3.amazonaws.com/assets/img/team/andres.jpg',
+                        description: 'Great Team member',
+                        linkedin: 'https://www.linkedin.com/in/acrm/'
+                    },
+                    {
+                        name: 'David Carvajal',
+                        position: 'CEO',
+                        picture: 'https://agrocity.s3.amazonaws.com/assets/img/team/david.jpg',
+                        description: 'Ingeniero Electrónico y Mecánico con más de 9 años de experiencia en desarrollo de productos y emprendimiento de alta tecnología. Cuenta con experiencia en investigación en nanotecnología en las áreas de microscopía de fuerza atómica y desarrollo de nanorecubrimientos. Durante su paso por la industria petrolera ha liderado equipos alrededor del mundo para el diseño, pruebas y despliegue de transmisiones mecánicas para plataformas petroleras. Posee experiencia en desarrollo web, analítica de datos, internet de las cosas y más recientemente en el desarrollo de aplicaciones en Blockchain.',
+                        linkedin: 'https://www.linkedin.com/in/dacarva/'
+                    },
+                    {
+                        name: 'Rafael Donado',
+                        position: 'COO',
+                        picture: 'https://agrocity.s3.amazonaws.com/assets/img/team/rafael.jpg',
+                        description: 'Ingeniero industrial con Maestria y más de 8 años de experiencia en finanzas, analizando oportunidades de inversión en empresas líderes en Latinoamérica. Estructuración de más de US$300 m en deuda, equity y mezanine en proyectos de salud, educación, agricultura y manufactura. Cofundador de varias iniciativas de emprendimiento de impacto.',
+                        linkedin: 'https://www.linkedin.com/in/jose-rafael-donado-vallejo-2a90a1b0/'
+                    },
+                    {
+                        name: 'Diana Hurtado',
+                        position: 'GIS Engineer',
+                        picture: 'https://agrocity.s3.amazonaws.com/assets/img/team/diana.jpg',
+                        description: 'Great Team member',
+                        linkedin: 'https://www.linkedin.com/in/dianacarolinahurtadoh/'
+                    },
+                    {
+                        name: 'Juan Sarmiento',
+                        position: 'Marketing',
+                        picture: 'https://agrocity.s3.amazonaws.com/assets/img/team/juan.jpg',
+                        description: 'Ingeniero Industrial de la universidad de los andes con énfasis en las areas de finanzas y producción. Experiencia en el sector petrolero, en el cual realizó la practica profesional llevando a cabo labores financieras y administrativas. Actualmente enfoca sus actidades en las areas de finanzas y mercadeo del sector tecnológico con el objetivo de aprender tecnicas eficientes de mercadeo que ayuden financieramente a la empresa.',
+                        linkedin: 'https://www.linkedin.com/in/juansarmientoc/'
+                    },
+                    {
+                        name: 'Isabel Marín',
+                        position: 'AgTech Engineer',
+                        picture: 'https://agrocity.s3.amazonaws.com/assets/img/team/isabel.jpg',
+                        description: 'Great Team member',
+                        linkedin: 'https://www.linkedin.com/in/maisabelmarinh/'
+                    },                                                                                                    
+                ],                    
+                    contact: {
+                        contact_us: "Contáctanos",
+                        phone: "Teléfono",
+                        email: "Correo Electrónico",
+                        contact_form: "Formulario de Contacto",
+                        your_name: "Tu Nombre",
+                        your_email: "Tu Correo Electrónico",
+                        i_am: "Soy un",
+                        grower: "Cultivador",
+                        buyer: "Comprador",
+                        your_message: "Tu mensaje",
+                        send_message: "Go!"
+                    }                              
+                }
+            }
+        }
+
+        const i18n = new VueI18n({
+            locale: 'es', // set locale
+            messages, // set locale messages
+        })
+
+        var app = new Vue({
+            i18n,
+            el: '#app',
+            data: {
+                social: [
+                    {
+                        network: 'Facebook',
+                        url: 'https://facebook.com/theagrocity',
+                        icon: 'fa-facebook'
+                    },
+                    {
+                        network: 'Instagram',
+                        url: 'https://instagram.com/theagrocity',
+                        icon: 'fa-instagram'
+                    },
+                    {
+                        network: 'LinkedIn',
+                        url: 'https://linkedin.com/company/theagrocity',
+                        icon: 'fa-linkedin'
+                    },
+                    {
+                        network: 'Twitter',
+                        url: 'https://twitter.com/theagrocity',
+                        icon: 'fa-twitter'
+                    }                                                            
+                ]    
+            },
+            methods: {
+                switchLocale () {
+                    if (this.$i18n.locale === 'es') {
+                        this.$i18n.locale = 'en'
+                    } else {
+                        this.$i18n.locale = 'es'
+                    }
+                }                
+            },
+            computed: {
+                displayLocale () {
+                    let other = 'https://agrocity.s3.amazonaws.com/assets/icons/flags/es.svg'
+                    if (this.$i18n.locale === 'es') {
+                        other = 'https://agrocity.s3.amazonaws.com/assets/icons/flags/us.svg'
+                    }
+                    return other
+                },
+            }                
+        })
+    </script>
+    
+    <script>
+        if( document.getElementsByClassName("ts-full-screen").length ) {
+            document.getElementsByClassName("ts-full-screen")[0].style.height = window.innerHeight + "px";
+        }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/popper.min.js" integrity="sha256-O17BxFKtTt1tzzlkcYwgONw4K59H+r1iI8mSQXvSf5k=" crossorigin="anonymous"></script>    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.0/js/bootstrap.min.js" integrity="sha256-oKpAiD7qu3bXrWRVxnXLV1h7FlNV+p5YJBIr8LOCFYw=" crossorigin="anonymous"></script>
+    <script src="https://agrocity.s3.amazonaws.com/assets/js/imagesloaded.pkgd.min.js"></script>
+	<script src="https://agrocity.s3.amazonaws.com/assets/js/isInViewport.jquery.js"></script>
+	<script src="https://agrocity.s3.amazonaws.com/assets/js/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js" integrity="sha256-4OK8Th0+5QJMThqlimytmqQvxjqMic4YATocjyuUh1w=" crossorigin="anonymous"></script>    
+	<script src="https://agrocity.s3.amazonaws.com/assets/js/scrolla.jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js" integrity="sha256-sPB0F50YUDK0otDnsfNHawYmA5M0pjjUf4TvRJkGFrI=" crossorigin="anonymous"></script>
+	<script src="https://agrocity.s3.amazonaws.com/assets/js/jquery-validate.bootstrap-tooltip.min.js"></script>
+    <script src="https://agrocity.s3.amazonaws.com/assets/js/custom.js"></script>
+</body>
+</html>

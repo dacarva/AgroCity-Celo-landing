@@ -31,6 +31,8 @@
         .social-icons{
             color:white;
             font-size: 1.5em;
+            margin-left:0.15em;
+            margin-right:0.15em            
         }
         .feature-icons {
             max-width: 220px;
@@ -68,6 +70,8 @@
                                 <a class="nav-item nav-link ts-scroll" href="#organize">{{ $t("message.nav.features") }}</a>
                                 <a class="nav-item nav-link ts-scroll" href="#our-team">{{ $t("message.nav.team") }}</a>
                                 <a class="nav-item nav-link ts-scroll" href="#form-contact">{{ $t("message.nav.contact") }}</a>
+                                <a class="nav-item nav-link ts-scroll" href="about.html">{{ $t("message.nav.about") }}</a>
+
 
                                 <!-- Locale toggler -->
                                 <img v-bind:src="displayLocale" v-on:click="switchLocale()" style="width: 25px;" alt="Locale flag">
@@ -380,7 +384,7 @@
                                     </figure>
                                     <div class="font-weight-bold">Social:</div>
                                     <!-- testing Vue -->
-                                    <a v-for="network in social" v-bind:href="network.url" class="social-icons" style="margin-left:0.1em;margin-right:0.1em">
+                                    <a v-for="network in social" v-bind:href="network.url" class="social-icons">
                                         <i class="fab" v-bind:class="network.icon"></i>
                                     </a>                                                 
                                 </address>
@@ -486,12 +490,13 @@
                         buy: 'Buy',
                         features: 'Features',
                         team: 'Team',
-                        contact: 'Contact'
+                        contact: 'Contact',
+                        about: 'About'
                     },
                     grow_organics_features: [
                     {
-                        title: 'Rent your terrace',
-                        description: 'We rent your terrace space to install hydroponic farms',
+                        title: 'Use your terrace',
+                        description: 'Purchase or rent the farm. We will install it your terrace and train you',
                         picture: 'https://agrocity.s3.amazonaws.com/assets/icons/Location.svg'
                     },
                     {
@@ -635,12 +640,13 @@
                         buy: 'Compra',
                         features: 'Características',
                         team: 'Equipo',
-                        contact: 'Contacto'
+                        contact: 'Contacto',
+                        about: 'Nosotros'
                     },
                     grow_organics_features: [
                     {
-                        title: 'Alquila tu terraza',
-                        description: 'Alquila el espacio de tu terraza para instalar granas hidropónicas',
+                        title: 'Produce en tu terraza',
+                        description: 'Compra o alguila la huerta. Nosotros la instalamos y te capacitamos',
                         picture: 'https://agrocity.s3.amazonaws.com/assets/icons/Location.svg'
                     },
                     {
