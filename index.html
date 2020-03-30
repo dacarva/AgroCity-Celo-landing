@@ -19,7 +19,6 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://unpkg.com/vue-i18n/dist/vue-i18n.js"></script>
 
-
     <style>
         .brand-text {
             font-family: 'Gotham';
@@ -41,7 +40,7 @@
         }
     </style>
 </head>
-<body data-spy="scroll" data-target=".navbar" class="has-loading-screen">
+<body data-spy="scroll" data-target=".navbar" class="has-loading-screen">   
     <div id="app">
         <div class="ts-page-wrapper" id="page-top">
 
@@ -380,18 +379,10 @@
                                         +57 310-247-1354
                                     </figure>
                                     <div class="font-weight-bold">Social:</div>
-                                    <a href="https://www.facebook.com/cannvest" class="social-icons">
-                                            <i class="fab fa-facebook"></i>
-                                    </a>
-                                    <a href="https://www.twitter.com/cannvest" class="social-icons">
-                                        <i class="fab fa-twitter"></i>
-                                    </a>                                                                
-                                    <a href="https://www.instagram.com/cnnvest" class="social-icons">
-                                        <i class="fab fa-instagram"></i>
-                                    </a>                                
-                                    <a href="https://www.linkedin.com/company/cannvest" class="social-icons">
-                                            <i class="fab fa-linkedin"></i>
-                                    </a>                                                        
+                                    <!-- testing Vue -->
+                                    <a v-for="network in social" v-bind:href="network.url" class="social-icons" style="margin-left:0.1em;margin-right:0.1em">
+                                        <i class="fab" v-bind:class="network.icon"></i>
+                                    </a>                                                 
                                 </address>
                                 <!--end address-->
                             </div>
@@ -819,23 +810,28 @@
                         linkedin: 'https://www.linkedin.com/in/maisabelmarinh/'
                     },                                                                                                    
                 ],
-                buy_ogranics_features: [
+                social: [
                     {
-                        title: 'Choose your food',
-                        description: 'Choose your menu from the closest growers to you',
-                        picture: 'https://agrocity.s3.amazonaws.com/assets/icons/Increasing_number_of_product.svg'
+                        network: 'Facebook',
+                        url: 'https://facebook.com/theagrocity',
+                        icon: 'fa-facebook'
                     },
                     {
-                        title: 'See how it grows near you',
-                        description: 'Follow the growth of your food with our app',
-                        picture: 'https://agrocity.s3.amazonaws.com/assets/icons/Water_moisture_control.svg'
+                        network: 'Instagram',
+                        url: 'https://instagram.com/theagrocity',
+                        icon: 'fa-instagram'
                     },
                     {
-                        title: 'See how it grows near you',
-                        description: 'Get fresh and healthy food from the closest growers',
-                        picture: 'https://agrocity.s3.amazonaws.com/assets/icons/Farmer.svg'
-                    }                      
-                ]                
+                        network: 'LinkedIn',
+                        url: 'https://linkedin.com/company/theagrocity',
+                        icon: 'fa-linkedin'
+                    },
+                    {
+                        network: 'Twitter',
+                        url: 'https://twitter.com/theagrocity',
+                        icon: 'fa-twitter'
+                    }                                                            
+                ]    
             },
             methods: {
                 switchLocale () {
@@ -878,7 +874,6 @@
 
 
     <!--Google map-->
-
     <script>
         var latitude = 4.676201;
         var longitude = -74.0533554;
